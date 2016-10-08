@@ -7,22 +7,23 @@ public class Player : Character {
 	private GameObject shootingProjectile;
 	private Transform shootSpawn;
 	private Vector3 velocity = Vector3.zero;
-
-	public float fireRate;
 	private float nextFire;
 
 	// Use this for initialization
 	new void Start ()
     {
         base.Start();
-		if (gameObject.name.Contains ("Demon")) {
-			shootingProjectile = shoot [0];
-			setIsBright (true);
-		} else {
-			shootingProjectile = shoot [1];
-			setIsDark (true);
-		}
-	}
+        if (gameObject.name.Contains("Angel"))
+        {
+            shootingProjectile = shoot[1];
+            setIsBright(true);
+        }
+        else if (gameObject.name.Contains("Demon"))
+        {
+            shootingProjectile = shoot[0];
+            setIsDark(true);
+        }
+    }
 
     void Update()
     {
@@ -45,7 +46,7 @@ public class Player : Character {
 
         //To limit the fire rate
         if (Time.time > nextFire) {
-            nextFire = Time.time + fireRate;
+            nextFire = Time.time + Constants.PLAYER_RATE_OF_FIRE;
 
             //Shooting with the right joystick
             if (Input.GetAxis("HorizontalAiming") != 0 || Input.GetAxis("VerticalAiming") != 0)
