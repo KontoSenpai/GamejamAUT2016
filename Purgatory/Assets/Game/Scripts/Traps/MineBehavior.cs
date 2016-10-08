@@ -7,6 +7,8 @@ public class MineBehavior : MonoBehaviour {
     // 0 = Demon
     // 1 = Holy
     public Sprite[] mineType;
+    public bool isOwnerDark = false;
+    public bool isOwnerBright = false;
 
     WanderersInRadius explosionRadius;
     List<GameObject> wanderersInExplosionRadius;
@@ -28,24 +30,47 @@ public class MineBehavior : MonoBehaviour {
         SpriteRenderer sprite = GetComponent<SpriteRenderer>();
         print(bright);
         if ( !bright)
+        {
             sprite.sprite = mineType[0];
+            isOwnerDark = true;
+        }
         else
+        {
             sprite.sprite = mineType[1];
+            isOwnerBright = true;
+        }
         sprite.enabled = true;
     }
 
     void OnTriggerEnter2D(Collider2D other)
-    {/*
-        //TODO, need to fuck replace the trigger condition with wanderer
-        //TODO, nee to replace the destruction of wanderers to a conversion
-        if( other.gameObject.tag == "Player")
+    {
+        if( other.gameObject.tag == "Wanderer")
         {
-            wanderersInExplosionRadius = explosionRadius.wanderers;
-            for(int i = 0; i < wanderersInExplosionRadius.Count; i++)
+            if( isOwnerBright = true && other.gameObject.GetComponent<Character>().getIsDark())
             {
-                Destroy(wanderersInExplosionRadius[i]);
+                wanderersInExplosionRadius = explosionRadius.wanderers;
+                for (int i = 0; i < wanderersInExplosionRadius.Count; i++)
+                {
+                    //TODO convert wanderers
+                    //Destroy(wanderersInExplosionRadius[i]);
+                }
+                Destroy(gameObject);
             }
-            Destroy(gameObject);
-        }*/
+            else if( isOwnerDark = true && other.gameObject.GetComponent<Character>().getIsBright())
+            {
+                wanderersInExplosionRadius = explosionRadius.wanderers;
+                for (int i = 0; i < wanderersInExplosionRadius.Count; i++)
+                {
+                    //TODO convert wanderers
+                    //Destroy(wanderersInExplosionRadius[i]);
+                }
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    void Explode()
+    {
+        print("toast");
     }
 }

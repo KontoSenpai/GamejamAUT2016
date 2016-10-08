@@ -29,9 +29,9 @@ public class PlayerInventory : Player
         GameObject objectPlaced = (GameObject)Instantiate(itemInInventory, transform.position, transform.rotation);
         if( objectPlaced.tag == "Mine")
         {
-            if (getIsDemon())
+            if (getIsDark())
                 objectPlaced.GetComponent<MineBehavior>().SetOwner(false);
-            else if (getIsAngel())
+            else if (getIsBright())
                 objectPlaced.GetComponent<MineBehavior>().SetOwner(true);
             itemInInventory = null;
         }
