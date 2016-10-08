@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using InControl;
 
 public class Player : Character {
 
@@ -9,7 +10,7 @@ public class Player : Character {
 	private Vector3 velocity = Vector3.zero;
 	private float nextFire;
 
-    private char m_playerIdentifier;
+    private uint m_playerIdentifier;
 
     // Use this for initialization
     new void Start ()
@@ -31,10 +32,15 @@ public class Player : Character {
 
     void Update()
     {
+        var player = InputManager.Devices[(int)m_playerIdentifier];
+
+        //var player2 = InputManager.Devices[2];
+
 
         //Debug.Log("Horizontal" + m_playerIdentifier);
 
         //Input are arrow keys and the left joystick
+        /*
         if (Input.GetAxis("Horizontal" + m_playerIdentifier) > 0.5)
             moveRight();
         else if (Input.GetAxis("Horizontal" + m_playerIdentifier) < -0.5)
@@ -50,17 +56,42 @@ public class Player : Character {
         else if (Input.GetAxis("Vertical" + m_playerIdentifier) < 0.5 &&
                  Input.GetAxis("Vertical" + m_playerIdentifier) > -0.5)
             stopVerticalMovement();
+        */
+
+        if (player.LeftStickX > 0.5)
+            moveRight();
+        else if (player.LeftStickX < -0.5)
+            moveLeft();
+        else if (player.LeftStickX < 0.5 &&
+                player.LeftStickX > -0.5)
+            stopHorizontalMovement();
+
+        if (player.LeftStickY > 0.5)
+            moveUp();
+        else if (player.LeftStickY < -0.5)
+            moveDown();
+        else if (player.LeftStickY < 0.5 &&
+                 player.LeftStickY > -0.5)
+            stopVerticalMovement();
+
 
         //To limit the fire rate
         if (Time.time > nextFire) {
             nextFire = Time.time + Constants.PLAYER_RATE_OF_FIRE;
-
+            //Shooting with the right joystick
+            if (player.RightStickX != 0 || player.RightStickY != 0)
+            {
+                Vector3 jShootingDirection = new Vector3(player.RightStickX, player.RightStickY, 0.0f);
+                aimNShoot(jShootingDirection);
+            }
+            /*
             //Shooting with the right joystick
             if (Input.GetAxis("HorizontalAiming" + m_playerIdentifier) != 0 || Input.GetAxis("VerticalAiming" + m_playerIdentifier) != 0)
             {
                 Vector3 jShootingDirection = new Vector3(Input.GetAxis("HorizontalAiming" + m_playerIdentifier), -(Input.GetAxis("VerticalAiming" + m_playerIdentifier)), 0.0f);
                 aimNShoot(jShootingDirection);
             }
+            */
 
             //if (Input.GetAxis("HorizontalAimingKey") != 0 || Input.GetAxis("VerticalAimingKey") != 0)
             //{

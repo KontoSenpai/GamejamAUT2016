@@ -8,8 +8,8 @@ public static class Constants {
     public const uint LEFT  = 2;
     public const uint RIGHT = 3;
 
-    public const char ANGEL = '1';
-    public const char DEMON = '2';
+    public const uint ANGEL = 1;
+    public const uint DEMON = 2;
 
     public const uint EMPTY = 0;
     public const uint PLAYER_ANGEL = 1;
