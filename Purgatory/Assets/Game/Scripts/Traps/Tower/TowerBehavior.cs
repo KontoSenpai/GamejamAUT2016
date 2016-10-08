@@ -69,10 +69,14 @@ public class TowerBehavior : MonoBehaviour {
     */
     void Shoot()
     {
-        float step = 4 * Time.deltaTime;
+        print("Tower Behavior - Shooting");
         GameObject projectile = (GameObject)Instantiate(shootingProjectile, transform.position, transform.rotation);
-        projectile.transform.position = Vector3.MoveTowards(transform.position, new Vector3(0,0,0), step);
+        if( projectile.GetComponent<TowerProjectileBehavior>().GetTargetPos() == null)
+        {
+            projectile.GetComponent<TowerProjectileBehavior>().SetTargetPos( new Vector3(0, 0, 0));
+        }
         lastShotTime = Time.time;
+        currentTarget = null;
     }
 
 
@@ -80,16 +84,13 @@ public class TowerBehavior : MonoBehaviour {
     {
         if (other.gameObject.tag == "Wanderer")
         {
+            // Currently no target, so we get a new one
             if (currentTarget == null)
             {
-                currentTarget = other.gameObject;
-            }
-            else
-            {
-                if (currentTarget.GetComponent<Soul>().getIsDark() && isOwnerDark)
-                {
+                if (other.GetComponent<Soul>().getIsBright() && isOwnerDark)
                     currentTarget = other.gameObject;
-                }
+                else if (other.GetComponent<Soul>().getIsDark() && isOwnerBright)
+                    currentTarget = other.gameObject;
             }
         }
     }
