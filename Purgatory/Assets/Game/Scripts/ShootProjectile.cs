@@ -5,23 +5,23 @@ public class ShootProjectile : MonoBehaviour {
 
 	public float speed;
 
-	private Vector3 mousePos;
-	private int length;
+	private Vector3 targetPos;
+
+    //Increase the direction of the projectile 
+    public uint length;
+
 	// Use this for initialization
 	void Start () {
-		length = 10;
 	}
 
 	void Update() {
 
-		//transform.position += velocity * speed * Time.deltaTime;
-
 		float step =  speed * Time.deltaTime;
-		transform.position = Vector3.MoveTowards (transform.position, mousePos * length, step);
+		transform.position = Vector3.MoveTowards (transform.position, targetPos * length, step);
 	}
 
-
-	public void SetMousePosition(Vector3 mouse) {
-		mousePos = mouse;
+    // Set the position to aim
+    public void SetTargetPosition(Vector3 target) {
+		targetPos = target;
 	}
 }
