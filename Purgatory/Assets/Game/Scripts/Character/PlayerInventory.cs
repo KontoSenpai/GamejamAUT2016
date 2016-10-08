@@ -24,6 +24,11 @@ public class PlayerInventory : Player
         print(itemInInventory.tag);
     }
 
+    public GameObject GetItemInInventory()
+    {
+        return itemInInventory;
+    }
+
     public void UseItem()
     {
         GameObject objectPlaced = (GameObject)Instantiate(itemInInventory, transform.position, transform.rotation);

@@ -21,7 +21,6 @@ public class PickUp : MonoBehaviour {
         if( other.gameObject.tag == "Player")
         {
             AddInventory(other.gameObject);
-            Destroy(gameObject);
         }
     }
 
@@ -29,6 +28,10 @@ public class PickUp : MonoBehaviour {
     {
         print("SENT TO USER INVENTORY");
         PlayerInventory inventory = player.gameObject.GetComponent<PlayerInventory>();
-        inventory.AddInventory(pickUpObject);
+        if( inventory.GetItemInInventory() == null)
+        {
+            inventory.AddInventory(pickUpObject);
+            Destroy(gameObject);
+        }
     }
 }

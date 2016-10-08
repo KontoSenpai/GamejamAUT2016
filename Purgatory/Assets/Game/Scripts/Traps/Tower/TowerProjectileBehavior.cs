@@ -7,8 +7,9 @@ public class TowerProjectileBehavior : MonoBehaviour {
     // true = bright;
     private bool owner;
     private GameObject target;
+    private GameObject towerOwn;
 
-    public GameObject getTarget()
+    public GameObject GetTarget()
     {
         return target;
     }
@@ -17,16 +18,6 @@ public class TowerProjectileBehavior : MonoBehaviour {
         target = targetObject;
     }
 
-    private Vector3 targetPos;
-
-    public void SetTargetPos( Vector3 pos)
-    {
-        targetPos = pos;
-    }
-    public Vector3 GetTargetPos()
-    {
-        return targetPos;
-    }
     // Use this for initialization
     void Start ()
     {
@@ -36,22 +27,20 @@ public class TowerProjectileBehavior : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if( target == null)
+        if( target != null)
         {
-            if( transform.position != targetPos)
+            if( transform.position != target.transform.position)
             {
-                print("Tower Projectile Behavior - Projectile not yet arrived");
-                float step = 4 * Time.deltaTime;
-                transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
+                float step = Constants.TOWER_PROJECTILE_SPEED * Time.deltaTime;
+                transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
             }
             else
             {
-                print("Tower Projectile Behavior - Projectile arrived at target position");
-                //TODO convert the target
+                target.GetComponent<Soul>().Hit(owner);
+                towerOwn.GetComponent<TowerBehavior>().ResetAggro();
                 Destroy(gameObject);
             }
         }
-
     }
 
     /**Method used to define the owner of the placed trap
@@ -59,8 +48,9 @@ public class TowerProjectileBehavior : MonoBehaviour {
 *
 * @params bright : boolean used to distinguish players
 */
-    public void SetOwner(bool bright)
+    public void SetOwner(bool bright, GameObject tower)
     {
+        towerOwn = tower;
         if (!bright)
         {
             owner = false;

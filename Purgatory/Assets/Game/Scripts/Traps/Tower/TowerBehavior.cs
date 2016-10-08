@@ -8,6 +8,7 @@ public class TowerBehavior : MonoBehaviour {
     public Sprite[] towerType;
     public GameObject[] projectile;
     private GameObject shootingProjectile;
+    private GameObject airProjectile;
 
     private bool isOwnerDark = false;
     private bool isOwnerBright = false;
@@ -34,9 +35,13 @@ public class TowerBehavior : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-        else if( Time.time - lastShotTime >= Constants.RATE_OF_FIRE /*&& currentTarget != null*/)
+        else if( currentTarget != null)
         {
-            Shoot();
+            if(Time.time - lastShotTime >= Constants.RATE_OF_FIRE)
+            {
+                print("Tower Behavior - calling a shoot");
+                ShootTarget();
+            }
         }
 	}
 
@@ -63,34 +68,84 @@ public class TowerBehavior : MonoBehaviour {
         sprite.enabled = true;
     }
 
-    /** Method that gonna attack a soul
-    *
-    *
-    */
-    void Shoot()
+
+    void ShootTarget()
     {
-        print("Tower Behavior - Shooting");
+        print("Tower Behavior - Shooting a soul");
         GameObject projectile = (GameObject)Instantiate(shootingProjectile, transform.position, transform.rotation);
-        if( projectile.GetComponent<TowerProjectileBehavior>().GetTargetPos() == null)
-        {
-            projectile.GetComponent<TowerProjectileBehavior>().SetTargetPos( new Vector3(0, 0, 0));
-        }
+        if (isOwnerBright)
+            projectile.GetComponent<TowerProjectileBehavior>().SetOwner(true, gameObject);
+        else
+            projectile.GetComponent<TowerProjectileBehavior>().SetOwner(false, gameObject);
+
+        projectile.GetComponent<TowerProjectileBehavior>().SetTarget( currentTarget);
         lastShotTime = Time.time;
-        currentTarget = null;
     }
 
+    public void ResetAggro()
+    {
+        currentTarget = null;
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Wanderer")
         {
+            print("Aiming a soul - Enter");
             // Currently no target, so we get a new one
             if (currentTarget == null)
             {
-                if (other.GetComponent<Soul>().getIsBright() && isOwnerDark)
+                Soul soul = other.GetComponent<Soul>();
+                print("no target");
+                if (isOwnerDark)
+                {
+                    print("Owner is dark");
+                    if (soul.getIsBright())
+                        currentTarget = other.gameObject;
+                    else if (!soul.getIsBright() && !soul.getIsDark())
+                        currentTarget = other.gameObject;
+                }
+                else if (isOwnerBright)
+                {
+                    print("Owner is bright");
+                    if (soul.getIsDark())
+                        currentTarget = other.gameObject;
+                    else if (!soul.getIsBright() && !soul.getIsDark())
+                        currentTarget = other.gameObject;
+                }
+                // If the target is neither dark or bright
+                else if (!other.GetComponent<Soul>().getIsBright() && !other.GetComponent<Soul>().getIsDark())
                     currentTarget = other.gameObject;
-                else if (other.GetComponent<Soul>().getIsDark() && isOwnerBright)
-                    currentTarget = other.gameObject;
+            }
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Wanderer")
+        {
+            print("Aiming a soul - Stay");
+            // Currently no target, so we get a new one
+            if (currentTarget == null)
+            {
+                Soul soul = other.GetComponent<Soul>();
+                print("no target");
+                if (isOwnerDark)
+                {
+                    print("Owner is dark");
+                    if (soul.getIsBright())
+                        currentTarget = other.gameObject;
+                    else if (!soul.getIsBright() && !soul.getIsDark())
+                        currentTarget = other.gameObject;
+                }
+                else if (isOwnerBright)
+                {
+                    print("Owner is bright");
+                    if (soul.getIsDark())
+                        currentTarget = other.gameObject;
+                    else if (!soul.getIsBright() && !soul.getIsDark())
+                        currentTarget = other.gameObject;
+                }
             }
         }
     }
