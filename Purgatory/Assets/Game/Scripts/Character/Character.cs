@@ -10,8 +10,8 @@ public class Character : MonoBehaviour {
 
     private uint m_spriteDirection;
 
-    private bool m_isDemon;
-    private bool m_isAngel;
+    private bool m_isDark;
+    private bool m_isBright;
 
     private Animator m_animator;
 
@@ -40,7 +40,9 @@ public class Character : MonoBehaviour {
             m_animator.SetFloat("vSpeed", m_velocity.y);
 
             m_animator.SetBool("isMoving", m_velocity.x > 0.1 || m_velocity.x < -0.1 ||
-                                              m_velocity.y > 0.1 || m_velocity.y < -0.1);
+                                           m_velocity.y > 0.1 || m_velocity.y < -0.1);
+
+            m_animator.SetInteger("spriteDirection", (int)m_spriteDirection);
 
         }
 
@@ -54,14 +56,14 @@ public class Character : MonoBehaviour {
     public Vector2 getPosition()        { return m_position; }
     public Vector2 getVelocity()        { return m_velocity; }
     public uint getSpriteDirection()    { return m_spriteDirection; }
-    public bool getIsDemon()            { return m_isDemon; }
-    public bool getIsAngel()            { return m_isAngel; }
+    public bool getIsDark()            { return m_isDark; }
+    public bool getIsBright()            { return m_isBright; }
 
         // ** Setters **
     public void setPosition(Vector2 position)               { m_position = position; }
     public void setSpriteDirection(uint spriteDirection)    { m_spriteDirection = spriteDirection; }
-    public void setIsDemon(bool isDemon)                    { m_isDemon = isDemon; }
-    public void setIsAngel(bool isAngel)                    { m_isAngel = isAngel; }
+    public void setIsDark(bool isDark)                      { m_isDark = isDark; }
+    public void setIsBright(bool isBright)                  { m_isBright = isBright; }
 
 
     // --- PUBLIC FUNCTIONS ---
