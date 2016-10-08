@@ -15,13 +15,13 @@ public class ShootProjectile : MonoBehaviour {
 	}
 
 	void Update() {
-
-		float step =  speed * Time.deltaTime;
-		transform.position = Vector3.MoveTowards (transform.position, targetPos * length, step);
-	}
+        float step = speed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, targetPos * length, step);
+    }
 
     // Set the position to aim
-    public void SetTargetPosition(Vector3 target) {
+    public void SetTargetPosition(Vector3 target)
+    {
 		targetPos = target;
 	}
 }

@@ -37,7 +37,7 @@ public class TowerBehavior : MonoBehaviour {
         }
         else if( currentTarget != null)
         {
-            if(Time.time - lastShotTime >= Constants.RATE_OF_FIRE)
+            if(Time.time - lastShotTime >= Constants.TOWER_RATE_OF_FIRE)
             {
                 print("Tower Behavior - calling a shoot");
                 ShootTarget();
@@ -73,12 +73,13 @@ public class TowerBehavior : MonoBehaviour {
     {
         print("Tower Behavior - Shooting a soul");
         GameObject projectile = (GameObject)Instantiate(shootingProjectile, transform.position, transform.rotation);
+        projectile.transform.parent = gameObject.transform;
         if (isOwnerBright)
-            projectile.GetComponent<TowerProjectileBehavior>().SetOwner(true, gameObject);
+            projectile.GetComponent<ProjectileBehavior>().SetOwner(true, true);
         else
-            projectile.GetComponent<TowerProjectileBehavior>().SetOwner(false, gameObject);
+            projectile.GetComponent<ProjectileBehavior>().SetOwner(false, true);
 
-        projectile.GetComponent<TowerProjectileBehavior>().SetTarget( currentTarget);
+        projectile.GetComponent<ProjectileBehavior>().SetTarget( currentTarget);
         lastShotTime = Time.time;
     }
 
@@ -99,23 +100,12 @@ public class TowerBehavior : MonoBehaviour {
                 print("no target");
                 if (isOwnerDark)
                 {
-                    print("Owner is dark");
-                    if (soul.getIsBright())
-                        currentTarget = other.gameObject;
-                    else if (!soul.getIsBright() && !soul.getIsDark())
-                        currentTarget = other.gameObject;
+                    DarkOwner(soul, other.gameObject);
                 }
                 else if (isOwnerBright)
                 {
-                    print("Owner is bright");
-                    if (soul.getIsDark())
-                        currentTarget = other.gameObject;
-                    else if (!soul.getIsBright() && !soul.getIsDark())
-                        currentTarget = other.gameObject;
+                    BrightOwner(soul, other.gameObject);
                 }
-                // If the target is neither dark or bright
-                else if (!other.GetComponent<Soul>().getIsBright() && !other.GetComponent<Soul>().getIsDark())
-                    currentTarget = other.gameObject;
             }
         }
     }
@@ -132,22 +122,32 @@ public class TowerBehavior : MonoBehaviour {
                 print("no target");
                 if (isOwnerDark)
                 {
-                    print("Owner is dark");
-                    if (soul.getIsBright())
-                        currentTarget = other.gameObject;
-                    else if (!soul.getIsBright() && !soul.getIsDark())
-                        currentTarget = other.gameObject;
+                    DarkOwner(soul, other.gameObject);
                 }
                 else if (isOwnerBright)
                 {
-                    print("Owner is bright");
-                    if (soul.getIsDark())
-                        currentTarget = other.gameObject;
-                    else if (!soul.getIsBright() && !soul.getIsDark())
-                        currentTarget = other.gameObject;
+                    BrightOwner(soul, other.gameObject);
                 }
             }
         }
+    }
+
+    private void DarkOwner(Soul soul, GameObject other)
+    {
+        print("Owner is dark");
+        if (soul.getIsBright())
+            currentTarget = other;
+        else if (!soul.getIsBright() && !soul.getIsDark())
+            currentTarget = other;
+    }
+
+    private void BrightOwner(Soul soul, GameObject other)
+    {
+        print("Owner is bright");
+        if (soul.getIsDark())
+            currentTarget = other.gameObject;
+        else if (!soul.getIsBright() && !soul.getIsDark())
+            currentTarget = other.gameObject;
     }
 
 }

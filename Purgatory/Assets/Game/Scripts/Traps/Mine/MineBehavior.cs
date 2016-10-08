@@ -46,7 +46,7 @@ public class MineBehavior : MonoBehaviour {
     {
         if( other.gameObject.tag == "Wanderer")
         {
-            if( isOwnerBright = true && other.gameObject.GetComponent<Character>().getIsDark())
+            if( isOwnerBright == true && other.gameObject.GetComponent<Character>().getIsDark())
             {
                 wanderersInExplosionRadius = explosionRadius.wanderers;
                 for (int i = 0; i < wanderersInExplosionRadius.Count; i++)
@@ -56,7 +56,7 @@ public class MineBehavior : MonoBehaviour {
                 }
                 Destroy(gameObject);
             }
-            else if( isOwnerDark = true && other.gameObject.GetComponent<Character>().getIsBright())
+            else if( isOwnerDark == true && other.gameObject.GetComponent<Character>().getIsBright())
             {
                 wanderersInExplosionRadius = explosionRadius.wanderers;
                 for (int i = 0; i < wanderersInExplosionRadius.Count; i++)
