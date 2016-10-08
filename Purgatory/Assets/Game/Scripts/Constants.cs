@@ -24,6 +24,7 @@ public static class Constants {
 
     public const float PLAYER_RATE_OF_FIRE = 0.25f;
     public const float PLAYER_PROJECTILE_SPEED = 6.0f;
+    public const float PLAYER_PROJECTILE_LIFESPAN = 5.0f;
 
     public const uint CRYSTAL_ANGEL = 100;
     public const uint CRYSTAL_DEMON = 200;
