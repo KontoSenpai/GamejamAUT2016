@@ -15,6 +15,9 @@ public static class Constants {
     public const uint POWERUP = 8;
     public const uint TOWER = 16;
 
+    public const float RATE_OF_FIRE = 1.00f;
+    public const float TOWER_LIFETIME = 20.00f;
+
     public const uint CRYSTAL_ANGEL = 100;
     public const uint CRYSTAL_DEMON = 200;
 }

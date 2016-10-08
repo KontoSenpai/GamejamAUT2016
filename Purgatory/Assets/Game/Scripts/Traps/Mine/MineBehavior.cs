@@ -7,8 +7,8 @@ public class MineBehavior : MonoBehaviour {
     // 0 = Demon
     // 1 = Holy
     public Sprite[] mineType;
-    public bool isOwnerDark = false;
-    public bool isOwnerBright = false;
+    private bool isOwnerDark = false;
+    private bool isOwnerBright = false;
 
     WanderersInRadius explosionRadius;
     List<GameObject> wanderersInExplosionRadius;

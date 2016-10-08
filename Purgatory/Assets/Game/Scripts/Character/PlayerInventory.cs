@@ -28,12 +28,26 @@ public class PlayerInventory : Player
     {
         GameObject objectPlaced = (GameObject)Instantiate(itemInInventory, transform.position, transform.rotation);
         if( objectPlaced.tag == "Mine")
-        {
-            if (getIsDark())
-                objectPlaced.GetComponent<MineBehavior>().SetOwner(false);
-            else if (getIsBright())
-                objectPlaced.GetComponent<MineBehavior>().SetOwner(true);
-            itemInInventory = null;
-        }
+            DeployMine(objectPlaced);
+        if( objectPlaced.tag == "Tower")
+            DeployTower(objectPlaced);
+    }
+
+    void DeployMine( GameObject mine)
+    {
+        if (getIsDark())
+            mine.GetComponent<MineBehavior>().SetOwner(false);
+        else if (getIsBright())
+            mine.GetComponent<MineBehavior>().SetOwner(true);
+        itemInInventory = null;
+    }
+
+    void DeployTower( GameObject tower)
+    {
+        if (getIsDark())
+            tower.GetComponent<TowerBehavior>().SetOwner(false);
+        else if (getIsBright())
+            tower.GetComponent<TowerBehavior>().SetOwner(true);
+        itemInInventory = null;
     }
 }
