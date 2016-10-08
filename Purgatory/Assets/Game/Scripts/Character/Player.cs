@@ -9,39 +9,46 @@ public class Player : Character {
 	private Vector3 velocity = Vector3.zero;
 	private float nextFire;
 
-	// Use this for initialization
-	new void Start ()
+    private char m_playerIdentifier;
+
+    // Use this for initialization
+    new void Start ()
     {
         base.Start();
         if (gameObject.name.Contains("Angel"))
         {
             shootingProjectile = shoot[1];
             setIsBright(true);
+            m_playerIdentifier = Constants.ANGEL;
         }
         else if (gameObject.name.Contains("Demon"))
         {
             shootingProjectile = shoot[0];
             setIsDark(true);
+            m_playerIdentifier = Constants.DEMON;
         }
     }
 
     void Update()
     {
+
+        //Debug.Log("Horizontal" + m_playerIdentifier);
+
         //Input are arrow keys and the left joystick
-        if (Input.GetAxis("Horizontal") > 0.5)
+        if (Input.GetAxis("Horizontal" + m_playerIdentifier) > 0.5)
             moveRight();
-        else if (Input.GetAxis("Horizontal") < -0.5)
+        else if (Input.GetAxis("Horizontal" + m_playerIdentifier) < -0.5)
             moveLeft();
-        else if (Input.GetAxis("Horizontal") < 0.5 &&
-                Input.GetAxis("Horizontal") > -0.5)
+        else if (Input.GetAxis("Horizontal" + m_playerIdentifier) < 0.5 &&
+                Input.GetAxis("Horizontal" + m_playerIdentifier) > -0.5)
             stopHorizontalMovement();
 
-        if (Input.GetAxis("Vertical") > 0.5)
+        if (Input.GetAxis("Vertical" + m_playerIdentifier) > 0.5)
             moveUp();
-        else if (Input.GetAxis("Vertical") < -0.5)
+        else if (Input.GetAxis("Vertical" + m_playerIdentifier) < -0.5)
             moveDown();
-        else if (Input.GetAxis("Vertical") < 0.5 &&
-                 Input.GetAxis("Vertical") > -0.5)
+        else if (Input.GetAxis("Vertical" + m_playerIdentifier) < 0.5 &&
+                 Input.GetAxis("Vertical" + m_playerIdentifier) > -0.5)
             stopVerticalMovement();
 
         //To limit the fire rate
@@ -49,17 +56,17 @@ public class Player : Character {
             nextFire = Time.time + Constants.PLAYER_RATE_OF_FIRE;
 
             //Shooting with the right joystick
-            if (Input.GetAxis("HorizontalAiming") != 0 || Input.GetAxis("VerticalAiming") != 0)
+            if (Input.GetAxis("HorizontalAiming" + m_playerIdentifier) != 0 || Input.GetAxis("VerticalAiming" + m_playerIdentifier) != 0)
             {
-                Vector3 jShootingDirection = new Vector3(Input.GetAxis("HorizontalAiming"), -(Input.GetAxis("VerticalAiming")), 0.0f);
+                Vector3 jShootingDirection = new Vector3(Input.GetAxis("HorizontalAiming" + m_playerIdentifier), -(Input.GetAxis("VerticalAiming" + m_playerIdentifier)), 0.0f);
                 aimNShoot(jShootingDirection);
             }
 
-            if (Input.GetAxis("HorizontalAimingKey") != 0 || Input.GetAxis("VerticalAimingKey") != 0)
-            {
-                Vector3 kShootingDirection = new Vector3(Input.GetAxis("HorizontalAimingKey"), Input.GetAxis("VerticalAimingKey"), 0.0f);
-                aimNShoot(kShootingDirection);
-            }
+            //if (Input.GetAxis("HorizontalAimingKey") != 0 || Input.GetAxis("VerticalAimingKey") != 0)
+            //{
+            //    Vector3 kShootingDirection = new Vector3(Input.GetAxis("HorizontalAimingKey"), Input.GetAxis("VerticalAimingKey"), 0.0f);
+            //    aimNShoot(kShootingDirection);
+            //}
 
             //Shooting with the mouse
             if (Input.GetMouseButton(0))
