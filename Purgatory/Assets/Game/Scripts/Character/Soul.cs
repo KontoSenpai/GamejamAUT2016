@@ -8,10 +8,9 @@ public class Soul : Character {
     // 2 : Bright
     public Sprite[] apparence;
 
-    void Start()
+    new void Start()
     {
-
-        GetComponent<Seeker>().seek(new Vector3(-5.0f, -5.0f));
+                //GetComponent<Seeker>().seek(new Vector3(-5.0f, -5.0f));
     }
 
     // Update is called once per frame
