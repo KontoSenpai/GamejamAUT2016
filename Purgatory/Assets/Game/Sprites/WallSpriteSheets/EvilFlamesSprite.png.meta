@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 077c346422cc66a479e99f55fdd1c59f
-timeCreated: 1475963639
+timeCreated: 1475965487
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -50,7 +50,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 25
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
@@ -62,9 +62,9 @@ TextureImporter:
       name: EvilFlamesSprite_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 2
-        width: 28
+        width: 27
         height: 38
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -75,9 +75,9 @@ TextureImporter:
       name: EvilFlamesSprite_1
       rect:
         serializedVersion: 2
-        x: 30
+        x: 32
         y: 2
-        width: 28
+        width: 27
         height: 38
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -88,9 +88,9 @@ TextureImporter:
       name: EvilFlamesSprite_2
       rect:
         serializedVersion: 2
-        x: 61
+        x: 63
         y: 2
-        width: 28
+        width: 27
         height: 38
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -101,9 +101,9 @@ TextureImporter:
       name: EvilFlamesSprite_3
       rect:
         serializedVersion: 2
-        x: 92
+        x: 94
         y: 2
-        width: 28
+        width: 27
         height: 38
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -114,9 +114,9 @@ TextureImporter:
       name: EvilFlamesSprite_4
       rect:
         serializedVersion: 2
-        x: 125
+        x: 127
         y: 2
-        width: 28
+        width: 27
         height: 38
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -127,10 +127,10 @@ TextureImporter:
       name: EvilFlamesSprite_5
       rect:
         serializedVersion: 2
-        x: 159
-        y: 3
-        width: 28
-        height: 37
+        x: 160
+        y: 2
+        width: 27
+        height: 38
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -41,6 +41,8 @@ public class PlayerInventory : MonoBehaviour
             DeployMine(objectPlaced);
         if( objectPlaced.tag == "Tower")
             DeployTower(objectPlaced);
+        if (objectPlaced.tag == "Wall")
+            DeployWall(objectPlaced);
     }
 
     void DeployMine( GameObject mine)
@@ -58,6 +60,15 @@ public class PlayerInventory : MonoBehaviour
             tower.GetComponent<TowerBehavior>().SetOwner(false);
         else if (isBright)
             tower.GetComponent<TowerBehavior>().SetOwner(true);
+        itemInInventory = null;
+    }
+
+    void DeployWall( GameObject wall)
+    {
+        if (!isBright)
+            wall.GetComponent<WallBehavior>().SetOwner(false);
+        else if (isBright)
+            wall.GetComponent<WallBehavior>().SetOwner(true);
         itemInInventory = null;
     }
 }

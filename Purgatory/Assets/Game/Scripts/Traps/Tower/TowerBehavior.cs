@@ -53,6 +53,7 @@ public class TowerBehavior : MonoBehaviour {
     public void SetOwner(bool bright)
     {
         SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+        print("Placed tower");
         if (!bright)
         {
             sprite.sprite = towerType[0];

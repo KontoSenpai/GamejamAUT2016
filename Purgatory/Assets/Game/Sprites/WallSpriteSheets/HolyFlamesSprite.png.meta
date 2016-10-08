@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: f6a60098f1827d1468f56e7b3b367052
-timeCreated: 1475963533
+timeCreated: 1475966638
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -50,7 +50,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 25
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
@@ -62,9 +62,9 @@ TextureImporter:
       name: HolyFlamesSprite_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 2
-        width: 28
+        width: 27
         height: 38
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -77,7 +77,7 @@ TextureImporter:
         serializedVersion: 2
         x: 32
         y: 2
-        width: 28
+        width: 27
         height: 38
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -90,7 +90,7 @@ TextureImporter:
         serializedVersion: 2
         x: 63
         y: 2
-        width: 28
+        width: 27
         height: 38
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -101,9 +101,9 @@ TextureImporter:
       name: HolyFlamesSprite_3
       rect:
         serializedVersion: 2
-        x: 95
+        x: 94
         y: 2
-        width: 28
+        width: 27
         height: 38
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -114,9 +114,9 @@ TextureImporter:
       name: HolyFlamesSprite_4
       rect:
         serializedVersion: 2
-        x: 126
+        x: 125
         y: 2
-        width: 28
+        width: 27
         height: 38
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -127,9 +127,9 @@ TextureImporter:
       name: HolyFlamesSprite_5
       rect:
         serializedVersion: 2
-        x: 156
+        x: 155
         y: 2
-        width: 28
+        width: 27
         height: 38
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
