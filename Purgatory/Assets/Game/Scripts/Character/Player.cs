@@ -4,11 +4,13 @@ using System.Collections;
 public class Player : Character {
 
 	// Use this for initialization
-	void Start () {
-
+	void Start ()
+    {
         base.Start();
-
-
+        if (gameObject.name.Contains("Angel"))
+            setIsAngel(true);
+        else
+            setIsDemon(true);
 	}
 
     void Update()

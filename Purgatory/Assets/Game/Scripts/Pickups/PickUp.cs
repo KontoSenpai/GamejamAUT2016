@@ -3,8 +3,10 @@ using System.Collections;
 
 public class PickUp : MonoBehaviour {
 
+    public GameObject pickUpObject;
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
 	
 	}
 	
@@ -16,12 +18,17 @@ public class PickUp : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        AddInventory(gameObject);
-        Destroy(gameObject);
+        if( other.gameObject.tag == "Player")
+        {
+            AddInventory(other.gameObject);
+            Destroy(gameObject);
+        }
     }
 
-    public void AddInventory(GameObject type)
+    public void AddInventory(GameObject player)
     {
-        print("TO DO : Send to user inventory");
+        print("SENT TO USER INVENTORY");
+        PlayerInventory inventory = player.gameObject.GetComponent<PlayerInventory>();
+        inventory.AddInventory(pickUpObject);
     }
 }
