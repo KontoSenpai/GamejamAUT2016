@@ -7,13 +7,13 @@ public class Player : Character {
 	public GameObject[] shoot;
 	private GameObject shootingProjectile;
 	private Transform shootSpawn;
-<<<<<<< HEAD
+
 	//private Vector3 velocity = Vector3.zero;
 
 	public float fireRate;
-=======
+
 	private Vector3 velocity = Vector3.zero;
->>>>>>> fe73c83451410d23c105de73a92f3b626d866bdc
+
 	private float nextFire;
 
     private uint m_playerIdentifier;
