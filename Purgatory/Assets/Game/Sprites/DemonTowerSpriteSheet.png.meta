@@ -47,13 +47,16 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 100
   alphaIsTransparency: 1
+  spriteTessellationDetail: -1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
+    serializedVersion: 2
     sprites:
-    - name: DemonTowerSpriteSheet_0
+    - serializedVersion: 2
+      name: DemonTowerSpriteSheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -63,15 +66,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -80, y: 82}
-        - {x: -80, y: -53}
-        - {x: -63, y: -80}
-        - {x: 53, y: -80}
-        - {x: 76, y: -65}
-        - {x: 80, y: -3}
-        - {x: 80, y: 82}
-    - name: DemonTowerSpriteSheet_1
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: DemonTowerSpriteSheet_1
       rect:
         serializedVersion: 2
         x: 0
@@ -81,20 +79,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 70.5, y: 83}
-        - {x: 68.5, y: 81}
-        - {x: 59.5, y: 75}
-        - {x: 31.5, y: 76}
-        - {x: -34.5, y: 83}
-        - {x: -80.5, y: 83}
-        - {x: -80.5, y: -53}
-        - {x: -62.5, y: -81}
-        - {x: 53.5, y: -81}
-        - {x: 76.5, y: -66}
-        - {x: 80.5, y: -4}
-        - {x: 80.5, y: 83}
-    - name: DemonTowerSpriteSheet_2
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: DemonTowerSpriteSheet_2
       rect:
         serializedVersion: 2
         x: 0
@@ -104,15 +92,8 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -41, y: 85}
-        - {x: -46, y: 82}
-        - {x: -46, y: -32}
-        - {x: -30, y: -85}
-        - {x: 45, y: -85}
-        - {x: 48, y: -67}
-        - {x: 48, y: 65}
-        - {x: 19, y: 85}
+      outline: []
+      tessellationDetail: -1
     outline: []
   spritePackingTag: 
   userData: 

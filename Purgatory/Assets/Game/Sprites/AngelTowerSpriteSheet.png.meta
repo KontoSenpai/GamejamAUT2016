@@ -47,13 +47,16 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 100
   alphaIsTransparency: 1
+  spriteTessellationDetail: -1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
+    serializedVersion: 2
     sprites:
-    - name: AngelSpriteSheet_0
+    - serializedVersion: 2
+      name: AngelSpriteSheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -63,31 +66,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -54, y: 80.5}
-        - {x: -72, y: -1.5}
-        - {x: -72, y: -52.5}
-        - {x: -45, y: -80.5}
-        - {x: 58, y: -80.5}
-        - {x: 72, y: -68.5}
-        - {x: 72, y: 55.5}
-        - {x: 65, y: 80.5}
-      - - {x: 70, y: 58.5}
-        - {x: 69, y: 55.5}
-        - {x: 70, y: 50.5}
-        - {x: 72, y: 48.5}
-        - {x: 74, y: 48.5}
-        - {x: 76, y: 50.5}
-        - {x: 75, y: 55.5}
-        - {x: 72, y: 58.5}
-      - - {x: -80, y: 70.5}
-        - {x: -80, y: 61.5}
-        - {x: -79, y: 60.5}
-        - {x: -77, y: 60.5}
-        - {x: -75, y: 61.5}
-        - {x: -75, y: 64.5}
-        - {x: -78, y: 70.5}
-    - name: AngelSpriteSheet_1
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: AngelSpriteSheet_1
       rect:
         serializedVersion: 2
         x: 0
@@ -97,28 +79,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -57.5, y: 81}
-        - {x: -71.5, y: -15}
-        - {x: -71.5, y: -49}
-        - {x: -51.5, y: -81}
-        - {x: 72.5, y: -81}
-        - {x: 72.5, y: 62}
-        - {x: 53.5, y: 81}
-      - - {x: -80.5, y: 51}
-        - {x: -79.5, y: 50}
-        - {x: -76.5, y: 51}
-        - {x: -76.5, y: 65}
-        - {x: -78.5, y: 67}
-        - {x: -80.5, y: 66}
-      - - {x: -80.5, y: 81}
-        - {x: -80.5, y: 71}
-        - {x: -79.5, y: 71}
-        - {x: -76.5, y: 73}
-        - {x: -69.5, y: 77}
-        - {x: -67.5, y: 79}
-        - {x: -68.5, y: 81}
-    - name: AngelSpriteSheet_2
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: AngelSpriteSheet_2
       rect:
         serializedVersion: 2
         x: 0
@@ -128,23 +92,8 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -54.5, y: 80.5}
-        - {x: -55.5, y: 79.5}
-        - {x: -55.5, y: 3.5}
-        - {x: -30.5, y: -80.5}
-        - {x: 40.5, y: -80.5}
-        - {x: 55.5, y: 27.5}
-        - {x: 55.5, y: 78.5}
-        - {x: 54.5, y: 80.5}
-      - - {x: -45.5, y: 64.5}
-        - {x: -46.5, y: 63.5}
-        - {x: -46.5, y: 59.5}
-        - {x: -44.5, y: 57.5}
-        - {x: -38.5, y: 57.5}
-        - {x: -36.5, y: 59.5}
-        - {x: -37.5, y: 62.5}
-        - {x: -41.5, y: 64.5}
+      outline: []
+      tessellationDetail: -1
     outline: []
   spritePackingTag: 
   userData: 
