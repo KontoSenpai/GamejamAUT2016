@@ -8,9 +8,9 @@ public class Player : Character {
     {
         base.Start();
         if (gameObject.name.Contains("Angel"))
-            setIsAngel(true);
+            setIsBright(true);
         else
-            setIsDemon(true);
+            setIsDark(true);
 	}
 
     void Update()
