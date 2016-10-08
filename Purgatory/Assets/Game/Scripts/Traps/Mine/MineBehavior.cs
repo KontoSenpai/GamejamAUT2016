@@ -28,7 +28,7 @@ public class MineBehavior : MonoBehaviour {
     public void SetOwner(bool bright)
     {
         SpriteRenderer sprite = GetComponent<SpriteRenderer>();
-        print(bright);
+        print("Placed mine");
         if ( !bright)
         {
             sprite.sprite = mineType[0];
