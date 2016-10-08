@@ -28,7 +28,7 @@ public class Seeker : MonoBehaviour {
 
     private List<Vector2> m_visited;
 
-    Vector2[] m_best;
+    Stack<Vector2> m_best;
 
     MapGrid m_map;
 
@@ -38,13 +38,39 @@ public class Seeker : MonoBehaviour {
         isActive = false;
         m_visited = new List<Vector2>();
         m_pathToDestination = new Stack<Vector2>();
-        m_best = new Vector2[50];
+        m_best = new Stack<Vector2>();
 
         m_map = GameObject.FindObjectOfType<MapGrid>();
     }
 
     void FixedUpdate()
     {
+
+        if(isActive)
+        {
+
+            if(m_best.Count == 0)
+            {
+
+                isActive = false;
+
+            }
+            else
+            {
+
+                Vector2 destination = m_map.getCenterOfCell((uint)m_best.Peek().x, (uint)m_best.Peek().y);
+
+                GetComponent<Soul>().moveTo(destination);
+
+                if (Vector2.Distance(destination, transform.position) < 0.1f)
+                    m_best.Pop();
+
+                if (m_best.Count == 0)
+                    GetComponent<Soul>().stopMovement();
+
+            }
+
+        }
 
     }
         
@@ -82,8 +108,20 @@ public class Seeker : MonoBehaviour {
 
         if (currentTile == destination)
         {
-            if (iter < m_best.Length || m_best.Length == 0)
-                m_pathToDestination.CopyTo(m_best, 0);
+            if (iter < m_best.Count || m_best.Count == 0)
+            {
+                m_best.Clear();
+
+                m_best.Push(currentTile);
+
+                Vector2[] copyPath = new Vector2[50];
+                m_pathToDestination.CopyTo(copyPath, 0);
+
+                for (int i = 0; i < m_pathToDestination.Count; i++)
+                    m_best.Push(copyPath[i]);
+
+            }
+
             return iter;
         }
 

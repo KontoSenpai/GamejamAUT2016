@@ -30,6 +30,9 @@ public class Character : MonoBehaviour {
 	protected void FixedUpdate ()
     {
 
+        if (m_velocity.magnitude != 1.0f)
+            m_velocity.Normalize();
+
         if (m_speed != 0.0f)
             m_position += m_velocity * m_speed * Time.deltaTime;
 
@@ -68,11 +71,14 @@ public class Character : MonoBehaviour {
 
     // --- PUBLIC FUNCTIONS ---
 
+    public void moveTo(Vector2 destination) { m_velocity = destination - m_position; }
+
     public void moveUp()    { m_velocity.y = 1.0f;  m_spriteDirection = Constants.UP; }
     public void moveDown()  { m_velocity.y = -1.0f; m_spriteDirection = Constants.DOWN; }
     public void moveLeft()  { m_velocity.x = -1.0f; m_spriteDirection = Constants.LEFT; }
     public void moveRight() { m_velocity.x = 1.0f;  m_spriteDirection = Constants.RIGHT; }
 
+    public void stopMovement()           { stopVerticalMovement(); stopHorizontalMovement(); }
     public void stopVerticalMovement()   { m_velocity.y = 0.0f; }
     public void stopHorizontalMovement() { m_velocity.x = 0.0f; }
 

@@ -5,45 +5,56 @@ public class MapGrid : MonoBehaviour {
 
     public uint row;
     public uint column;
-    public int xMin;
-    public int xMax;
-    public int yMin;
-    public int yMax;
+    public float xMin;
+    public float xMax;
+    public float yMin;
+    public float yMax;
 
     public GameObject backgroundTile;
-    public Sprite backgroundSprite;
+    public GameObject rockTile;
 
     private uint[][] mapGrid;
-    private uint cellWidth;
-    private uint cellHeight;
+    private float cellWidth;
+    private float cellHeight;
 
     // Use this for initialization
     void Start () {
         
-        cellWidth = ((uint)(Mathf.Abs(xMin) + Mathf.Abs(xMax))) / column;
-        cellHeight = ((uint)(Mathf.Abs(yMin) + Mathf.Abs(yMax))) / row;
+        cellWidth = (Mathf.Abs(xMin) + Mathf.Abs(xMax)) / column;
+        cellHeight = (Mathf.Abs(yMin) + Mathf.Abs(yMax)) / row;
 
         mapGrid = new uint[row][];
 
         for (uint i = 0; i < row; i++)
+        {
+
             mapGrid[i] = new uint[column];
 
-        for (uint i = 0; i < row; i++)
-        {
             for (uint j = 0; j < column; j++)
             {
+
                 mapGrid[i][j] = Constants.EMPTY;
-                
+
                 backgroundTile.transform.localScale = new Vector3(cellWidth / backgroundTile.GetComponent<SpriteRenderer>().sprite.bounds.size.x * 1.01f,
                                                                   cellHeight / backgroundTile.GetComponent<SpriteRenderer>().sprite.bounds.size.y * 1.01f,
                                                                   0);
-                Instantiate(backgroundTile, new Vector3(xMin + j * cellWidth, yMax - i * cellHeight,0), Quaternion.identity);
+                Instantiate(backgroundTile, new Vector3(xMin + j * cellWidth, yMax - i * cellHeight, 0), Quaternion.identity);
+
             }
         }
+
+        rockTile.transform.localScale = new Vector3(cellWidth / rockTile.GetComponent<SpriteRenderer>().sprite.bounds.size.x * 1.01f,
+                                                    cellHeight / rockTile.GetComponent<SpriteRenderer>().sprite.bounds.size.y * 1.01f,
+                                                    0);
+        Instantiate(rockTile, new Vector3(xMin + 2 * cellWidth, yMax - 3 * cellHeight, 0), Quaternion.identity);
+        mapGrid[3][2] = Constants.OBSTACLE;
 
         print(cellWidth);
         print(manhattanDistance(new Vector2(-5.3f, 5.8f), new Vector2(-8.6f, -2.5f)));
         print(getCenterOfCell(5, 0));
+
+        GameObject.FindObjectOfType<Seeker>().seek(new Vector3(-5.0f, -5.0f));
+
     }
 	
 	// Update is called once per frame
