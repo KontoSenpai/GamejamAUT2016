@@ -7,28 +7,59 @@ public class Soul : Character {
     // 1 : Dark
     // 2 : Bright
     public Sprite[] apparence;
+    public float wanderDelay;
+
+    private float timer;
+    private Wander wander;
+    private bool isWandering = false;
 
     new void Start()
     {
-                //GetComponent<Seeker>().seek(new Vector3(-5.0f, -5.0f));
+        base.Start();
+        wander = GetComponent<Wander>();
+        timer = Time.time;
+
     }
 
     // Update is called once per frame
-    /*void FixedUpdate ()
+    new void Update ()
     {
-        if (!getIsDark && !getIsBright)
-            Wander();
-	}
+        if(!isWandering)
+        {
+            isWandering = true;
+            wander.Wandering();
+        }
 
-    public void changeColor()
-    {
-        setIsBright(!getIsBright);
-        setIsDark(!getIsDark);
-    }*/
+        base.Update();
+
+        /*if (!getIsDark() && !getIsBright())
+            if (Time.time - timer >= 2.0f)
+            {
+                stopMovement();
+                Wander();
+                timer = Time.time;
+            }*/
+	}
 
     public void Wander()
     {
-        
+        uint rand = (uint)Random.Range(0, 4);
+
+        switch(rand)
+        {
+            case Constants.UP:
+                moveUp();
+                break;
+            case Constants.DOWN:
+                moveDown();
+                break;
+            case Constants.LEFT:
+                moveLeft();
+                break;
+            case Constants.RIGHT:
+                moveRight();
+                break;
+        }
     }
 
     public void Hit(bool projectileOwner)

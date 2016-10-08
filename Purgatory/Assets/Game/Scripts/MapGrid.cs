@@ -40,6 +40,7 @@ public class MapGrid : MonoBehaviour {
                                                                   0);
                 Instantiate(backgroundTile, new Vector3(xMin + j * cellWidth, yMax - i * cellHeight, 0), Quaternion.identity);
 
+
             }
         }
 
@@ -49,11 +50,7 @@ public class MapGrid : MonoBehaviour {
         Instantiate(rockTile, new Vector3(xMin + 2 * cellWidth, yMax - 3 * cellHeight, 0), Quaternion.identity);
         mapGrid[3][2] = Constants.OBSTACLE;
 
-        print(cellWidth);
-        print(manhattanDistance(new Vector2(-5.3f, 5.8f), new Vector2(-8.6f, -2.5f)));
-        print(getCenterOfCell(5, 0));
-
-        GameObject.FindObjectOfType<Seeker>().seek(new Vector3(-5.0f, -5.0f));
+        //GameObject.FindObjectOfType<Seeker>().seek(new Vector3(-5.0f, -5.0f));
 
     }
 	

@@ -18,7 +18,7 @@ public class Character : MonoBehaviour {
 
     protected void Start () {
 
-        //m_position = basePosition;
+        m_position = basePosition;
 
         m_spriteDirection = Constants.DOWN;
 
@@ -27,7 +27,7 @@ public class Character : MonoBehaviour {
 	}
 	
 	// Moves Character
-	protected void FixedUpdate ()
+	protected void Update ()
     {
 
         if (m_velocity.magnitude != 1.0f)

@@ -6,7 +6,7 @@ public class Player : Character {
 	public GameObject[] shoot;
 	private GameObject shootingProjectile;
 	private Transform shootSpawn;
-	private Vector3 velocity = Vector3.zero;
+	//private Vector3 velocity = Vector3.zero;
 
 	public float fireRate;
 	private float nextFire;
@@ -24,7 +24,7 @@ public class Player : Character {
 		}
 	}
 
-    void Update()
+    new void Update()
     {
         //Input are arrow keys and the left joystick
         if (Input.GetAxis("Horizontal") > 0.5)
@@ -73,6 +73,7 @@ public class Player : Character {
             //DONT DELETE IT WORKS 
         }
 
+        base.Update();
 
     }	
 
