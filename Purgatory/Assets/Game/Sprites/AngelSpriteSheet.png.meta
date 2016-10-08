@@ -1,0 +1,152 @@
+fileFormatVersion: 2
+guid: 0fe3c01a8b833e748b1da6c4b9150c83
+timeCreated: 1475897408
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: AngelSpriteSheet_0
+    21300002: AngelSpriteSheet_1
+    21300004: AngelSpriteSheet_2
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 200
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: AngelSpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 360
+        width: 160
+        height: 161
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -54, y: 80.5}
+        - {x: -72, y: -1.5}
+        - {x: -72, y: -52.5}
+        - {x: -45, y: -80.5}
+        - {x: 58, y: -80.5}
+        - {x: 72, y: -68.5}
+        - {x: 72, y: 55.5}
+        - {x: 65, y: 80.5}
+      - - {x: 70, y: 58.5}
+        - {x: 69, y: 55.5}
+        - {x: 70, y: 50.5}
+        - {x: 72, y: 48.5}
+        - {x: 74, y: 48.5}
+        - {x: 76, y: 50.5}
+        - {x: 75, y: 55.5}
+        - {x: 72, y: 58.5}
+      - - {x: -80, y: 70.5}
+        - {x: -80, y: 61.5}
+        - {x: -79, y: 60.5}
+        - {x: -77, y: 60.5}
+        - {x: -75, y: 61.5}
+        - {x: -75, y: 64.5}
+        - {x: -78, y: 70.5}
+    - name: AngelSpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 180
+        width: 161
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -57.5, y: 81}
+        - {x: -71.5, y: -15}
+        - {x: -71.5, y: -49}
+        - {x: -51.5, y: -81}
+        - {x: 72.5, y: -81}
+        - {x: 72.5, y: 62}
+        - {x: 53.5, y: 81}
+      - - {x: -80.5, y: 51}
+        - {x: -79.5, y: 50}
+        - {x: -76.5, y: 51}
+        - {x: -76.5, y: 65}
+        - {x: -78.5, y: 67}
+        - {x: -80.5, y: 66}
+      - - {x: -80.5, y: 81}
+        - {x: -80.5, y: 71}
+        - {x: -79.5, y: 71}
+        - {x: -76.5, y: 73}
+        - {x: -69.5, y: 77}
+        - {x: -67.5, y: 79}
+        - {x: -68.5, y: 81}
+    - name: AngelSpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 161
+        height: 161
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -54.5, y: 80.5}
+        - {x: -55.5, y: 79.5}
+        - {x: -55.5, y: 3.5}
+        - {x: -30.5, y: -80.5}
+        - {x: 40.5, y: -80.5}
+        - {x: 55.5, y: 27.5}
+        - {x: 55.5, y: 78.5}
+        - {x: 54.5, y: 80.5}
+      - - {x: -45.5, y: 64.5}
+        - {x: -46.5, y: 63.5}
+        - {x: -46.5, y: 59.5}
+        - {x: -44.5, y: 57.5}
+        - {x: -38.5, y: 57.5}
+        - {x: -36.5, y: 59.5}
+        - {x: -37.5, y: 62.5}
+        - {x: -41.5, y: 64.5}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
