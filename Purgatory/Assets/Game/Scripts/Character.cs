@@ -4,13 +4,17 @@ using System.Collections;
 public class Character : MonoBehaviour {
 
     private Vector2 m_position;
-    private Vector2 m_direction;
+    private Vector2 m_velocity;
 
-    private byte m_isDemon;
+    private uint m_spriteDirection;
+
+    private string m_gameColor;
 
 	// Use this for initialization
 	void Start () {
-	
+
+        m_spriteDirection = Constants.DOWN;
+
 	}
 	
 	// Update is called once per frame
@@ -18,6 +22,8 @@ public class Character : MonoBehaviour {
 	
 	}
 
-    public Vector2 getPosition() { return m_position; }
-    public Vector2 getDirection() { return m_isDemon; }
+    public Vector2 getPosition()        { return m_position; }
+    public Vector2 getVelocity()        { return m_velocity; }
+    public uint getSpriteDirection()    { return m_spriteDirection; }
+    public string getGameColor()        { return m_gameColor; }
 }
