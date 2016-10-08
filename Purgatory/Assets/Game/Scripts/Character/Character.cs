@@ -18,12 +18,22 @@ public class Character : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
-	
+	void FixedUpdate ()
+    {
+
+        if (m_velocity != Vector2.zero)
+            m_position += m_velocity * Time.deltaTime;
+
 	}
 
     public Vector2 getPosition()        { return m_position; }
     public Vector2 getVelocity()        { return m_velocity; }
     public uint getSpriteDirection()    { return m_spriteDirection; }
     public string getGameColor()        { return m_gameColor; }
+
+    public void setPosition(Vector2 position)               { m_position = position; }
+    public void setVelocity(Vector2 velocity)               { m_velocity = velocity; }
+    public void setSpriteDirection(uint spriteDirection)    { m_spriteDirection = spriteDirection; }
+    public void setGameColor(string gameColor)              { m_gameColor = gameColor; }
+
 }
