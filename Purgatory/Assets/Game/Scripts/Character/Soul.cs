@@ -9,7 +9,10 @@ public class Soul : Character {
     public Sprite[] apparence;
 
     void Start()
-    { }
+    {
+
+        GetComponent<Seeker>().seek(new Vector3(-5.0f, -5.0f));
+    }
 
     // Update is called once per frame
     /*void FixedUpdate ()
@@ -20,8 +23,8 @@ public class Soul : Character {
 
     public void changeColor()
     {
-        setIsAngel(!getIsBright);
-        setIsDemon(!getIsDark);
+        setIsBright(!getIsBright);
+        setIsDark(!getIsDark);
     }*/
 
     public void Wander()

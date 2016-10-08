@@ -33,15 +33,17 @@ public class MapGrid : MonoBehaviour {
             for (uint j = 0; j < column; j++)
             {
                 mapGrid[i][j] = Constants.EMPTY;
-
-                backgroundTile.GetComponent<SpriteRenderer>().sprite = backgroundSprite;
-                Instantiate(backgroundTile, new Vector3(i,j,0), Quaternion.identity);
+                
+                backgroundTile.transform.localScale = new Vector3(cellWidth / backgroundTile.GetComponent<SpriteRenderer>().sprite.bounds.size.x * 1.01f,
+                                                                  cellHeight / backgroundTile.GetComponent<SpriteRenderer>().sprite.bounds.size.y * 1.01f,
+                                                                  0);
+                Instantiate(backgroundTile, new Vector3(xMin + j * cellWidth, yMax - i * cellHeight,0), Quaternion.identity);
             }
         }
-                
 
-        print(getCellCoord(new Vector2(-2, 3)));
-        print(getCellCoord(new Vector2(-3, -4)));
+        print(cellWidth);
+        print(manhattanDistance(new Vector2(-5.3f, 5.8f), new Vector2(-8.6f, -2.5f)));
+        print(getCenterOfCell(5, 0));
     }
 	
 	// Update is called once per frame
@@ -49,10 +51,25 @@ public class MapGrid : MonoBehaviour {
 	
 	}
 
+    public uint getRow()
+    {
+        return row;
+    }
+
+    public uint getColumn()
+    {
+        return column;
+    }
+
+    public uint[][] getMatrix()
+    {
+        return mapGrid;
+    }
+
     public Vector2 getCellCoord(Vector2 pos)
     {
         uint xCol = (uint)((pos.x + (-xMin)) / cellWidth);
-        uint yRow = (uint)((pos.y + (-yMin)) / cellHeight);
+        uint yRow = (row - 1) - (uint)((pos.y + (-yMin)) / cellHeight);
 
         return new Vector2(yRow, xCol);
     }
@@ -61,6 +78,37 @@ public class MapGrid : MonoBehaviour {
     {
         Vector2 coord = getCellCoord(pos);
 
-        return mapGrid[(uint)coord.x][(uint)coord.y];
+        return getCellValue((uint)coord.x, (uint)coord.y);
     }
+
+    public uint getCellValue(uint x, uint y)
+    {
+        return mapGrid[x][y];
+    }
+
+    public Vector2 getCenterOfCell(uint x, uint y)
+    {
+        return new Vector2(xMin + (y * cellWidth + (float)cellWidth / 2),
+                           yMax - (x * cellHeight + (float)cellHeight / 2));
+    }
+
+    public Vector2 manhattanDistance(Vector2 StartPoint, Vector2 EndPoint)
+    {
+
+        Vector2 matrixCellCoord_StartPoint = getCellCoord(StartPoint);
+        Vector2 matrixCellCoord_EndPoint = getCellCoord(EndPoint);
+
+        return manhattanDistance((int)matrixCellCoord_StartPoint.x, (int)matrixCellCoord_StartPoint.y,
+                                 (int)matrixCellCoord_EndPoint.x, (int)matrixCellCoord_EndPoint.y);
+
+    }
+
+
+    public Vector2 manhattanDistance(int xStart, int yStart, int xEnd, int yEnd)
+    {
+        return new Vector2(xEnd - xStart, yEnd - yStart);
+    }
+
+
+
 }
