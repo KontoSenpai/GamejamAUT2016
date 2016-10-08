@@ -1,10 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerInventory : Player
+public class PlayerInventory : MonoBehaviour
 {
     GameObject itemInInventory;
+    private bool isBright;
 
+    void Start()
+    {
+        isBright = GetComponent<Player>().getIsBright();
+    }
 	// Update is called once per frame
 	void Update()
     {
@@ -40,18 +45,18 @@ public class PlayerInventory : Player
 
     void DeployMine( GameObject mine)
     {
-        if (getIsDark())
+        if (!isBright)
             mine.GetComponent<MineBehavior>().SetOwner(false);
-        else if (getIsBright())
+        else if (isBright)
             mine.GetComponent<MineBehavior>().SetOwner(true);
         itemInInventory = null;
     }
 
     void DeployTower( GameObject tower)
     {
-        if (getIsDark())
+        if (!isBright)
             tower.GetComponent<TowerBehavior>().SetOwner(false);
-        else if (getIsBright())
+        else if (isBright)
             tower.GetComponent<TowerBehavior>().SetOwner(true);
         itemInInventory = null;
     }

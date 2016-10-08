@@ -37,7 +37,7 @@ public class TowerBehavior : MonoBehaviour {
         }
         else if( currentTarget != null)
         {
-            if(Time.time - lastShotTime >= Constants.RATE_OF_FIRE)
+            if(Time.time - lastShotTime >= Constants.TOWER_RATE_OF_FIRE)
             {
                 print("Tower Behavior - calling a shoot");
                 ShootTarget();
