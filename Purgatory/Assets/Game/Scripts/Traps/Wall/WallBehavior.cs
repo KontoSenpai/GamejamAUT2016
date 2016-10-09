@@ -7,22 +7,25 @@ public class WallBehavior : MonoBehaviour {
     // 1 : Holy
     public RuntimeAnimatorController[] animatorSprites;
 
-    private float lifeStart;
-
     private bool isOwnerDark = false;
     private bool isOwnerBright = false;
 
     // Use this for initialization
     void Start ()
     {
+<<<<<<< HEAD
 
         lifeStart = Time.deltaTime;
 
+=======
+	
+>>>>>>> af56226abe9e68aae530ef09ffb3470bef5f5da9
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
+<<<<<<< HEAD
 
         if (Time.deltaTime - lifeStart >= Constants.TOWER_LIFETIME)
         {
@@ -36,6 +39,9 @@ public class WallBehavior : MonoBehaviour {
 
         }
 
+=======
+	
+>>>>>>> af56226abe9e68aae530ef09ffb3470bef5f5da9
 	}
 
     public void SetOwner(bool bright)
