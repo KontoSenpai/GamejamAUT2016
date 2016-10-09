@@ -16,6 +16,8 @@ public class ProjectileBehavior : MonoBehaviour {
     // Variables of tower projectiles
     private GameObject target;
 
+    private float creationTime;
+
     public GameObject GetTarget()
     {
         return target;
@@ -28,15 +30,20 @@ public class ProjectileBehavior : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        creationTime = Time.time;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Time.time - creationTime >= Constants.PLAYER_PROJECTILE_LIFESPAN)
+        {
+            Destroy(gameObject);
+        }
         if (ownerType == false)
         {
             float step = Constants.PLAYER_PROJECTILE_SPEED * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, projectileDirection * 50, step);
+            transform.position = Vector3.MoveTowards(transform.position, transform.position+projectileDirection, step);
         }
         else
         {
@@ -70,13 +77,6 @@ public class ProjectileBehavior : MonoBehaviour {
     public void SetOwner(bool bright, bool tower)
     {
         ownerType = tower;
-        if (!bright)
-        {
-            ownerSide = false;
-        }
-        else
-        {
-            ownerSide = true;
-        }
+        ownerSide = bright;
     }
 }
