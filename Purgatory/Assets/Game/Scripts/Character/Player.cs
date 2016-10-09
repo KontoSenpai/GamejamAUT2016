@@ -183,7 +183,6 @@ public class Player : Character {
     private void PlayerFireHandleKeyboard()
     {
         Vector3 direction = new Vector3();
-        print(Input.GetAxis("HorizontalAimingKey"));
         if( Input.GetAxis("HorizontalAimingKey") > 0.5)
             direction.x = 1;
         else if (Input.GetAxis("HorizontalAimingKey") < -0.5)
@@ -221,7 +220,10 @@ public class Player : Character {
 		shootSpawn.rotation = Quaternion.Euler (shootSpawn.eulerAngles);
         */
 
-        GameObject instantiatedProjectile = (GameObject)Instantiate (projectile, transform.position, transform.rotation);
+        Vector3 projectileInitialPosition = new Vector3();
+        projectileInitialPosition = transform.position;
+        projectileInitialPosition.y += 2.5f;
+        GameObject instantiatedProjectile = (GameObject)Instantiate (projectile, projectileInitialPosition, transform.rotation);
 
         if(getIsBright())
             instantiatedProjectile.GetComponent<ProjectileBehavior>().SetOwner( true, false);
