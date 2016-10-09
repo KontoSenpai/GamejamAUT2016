@@ -109,5 +109,22 @@ public class Character : MonoBehaviour {
                 m_position = transform.position;
         }
 
+        //Vector2 m_positionCellCoord = GameObject.FindObjectOfType<MapGrid>().getCellCoord(m_position);
+        MapGrid map = GameObject.FindObjectOfType<MapGrid>();
+        float offset = 0.1f;
+
+        if (m_position.x < map.xMin )
+            m_position.x = map.xMin + offset;
+
+        if (m_position.x >= map.xMax)
+            m_position.x = map.xMax - offset;
+
+        if (m_position.y < map.yMin)
+            m_position.y = map.yMin + offset;
+
+        if (m_position.y >= map.yMax)
+            m_position.y = map.yMax - offset;
+
+
     }
 }
