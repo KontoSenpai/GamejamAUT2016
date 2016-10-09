@@ -7,7 +7,6 @@ public class Soul : Character {
     // 1 : Dark
     // 2 : Bright
     public Sprite[] apparence;
-    public float wanderDelay;
 
     private float timer;
     private Wander wander;
@@ -19,6 +18,8 @@ public class Soul : Character {
         wander = GetComponent<Wander>();
         timer = Time.time;
 
+        setIsBright(false);
+        setIsDark(false);
     }
 
     // Update is called once per frame

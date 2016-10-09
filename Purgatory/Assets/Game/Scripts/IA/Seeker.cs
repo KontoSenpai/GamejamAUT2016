@@ -133,6 +133,12 @@ public class Seeker : MonoBehaviour {
 
         if (matrix[(int)currentTile.x][(int)currentTile.y] / 1000 == 1)
             return -1;
+        else if (matrix[(int)currentTile.x][(int)currentTile.y] / 1000 == 2 &&
+                 GetComponent<Soul>().getIsDark())
+            return -1;
+        else if (matrix[(int)currentTile.x][(int)currentTile.y] / 1000 == 3 &&
+                 GetComponent<Soul>().getIsBright())
+            return -1;
 
         m_pathToDestination.Push(currentTile);
         m_visited.Add(currentTile);

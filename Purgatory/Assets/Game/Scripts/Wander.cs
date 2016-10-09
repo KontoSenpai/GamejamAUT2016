@@ -57,7 +57,13 @@ public class Wander : MonoBehaviour {
 
             if ((adjacent.x >= 0 && adjacent.x < m_map.getRow()) &&
                (adjacent.y >= 0 && adjacent.y < m_map.getColumn()))
-                if(m_map.getCellValue((uint)adjacent.x, (uint)adjacent.y) / 1000 == 0)
+                if (m_map.getCellValue((uint)adjacent.x, (uint)adjacent.y) / 1000 == 0)
+                    possibleCases.Add(adjacent);
+                else if (m_map.getCellValue((uint)adjacent.x, (uint)adjacent.y) / 1000 == 2 &&
+                        GetComponent<Soul>().getIsBright())
+                    possibleCases.Add(adjacent);
+                else if (m_map.getCellValue((uint)adjacent.x, (uint)adjacent.y) / 1000 == 3 &&
+                        GetComponent<Soul>().getIsDark())
                     possibleCases.Add(adjacent);
 
         }
