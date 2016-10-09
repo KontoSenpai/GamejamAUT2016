@@ -16,9 +16,7 @@ public class WallBehavior : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
         lifeStart = Time.time;
-
     }
 
     // Update is called once per frame

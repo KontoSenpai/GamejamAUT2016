@@ -48,10 +48,8 @@ public class Character : MonoBehaviour {
             m_animator.SetInteger("spriteDirection", (int)m_spriteDirection);
 
         }
-
-        transform.position = m_position;
-
-	}
+        AllowMovement();
+    }
 
     // --- ACCESSORS ---
 
@@ -84,4 +82,32 @@ public class Character : MonoBehaviour {
     public void stopVerticalMovement()   { m_velocity.y = 0.0f; }
     public void stopHorizontalMovement() { m_velocity.x = 0.0f; }
 
+
+    private void AllowMovement()
+    {
+        if( m_isBright)
+        {
+            if (GameObject.FindObjectOfType<MapGrid>().getCellValue(m_position) / 1000 == 0
+               || GameObject.FindObjectOfType<MapGrid>().getCellValue(m_position) / 1000 == 2)
+                transform.position = m_position;
+            else
+                m_position = transform.position;
+        }
+        else if( m_isDark)
+        {
+            if (GameObject.FindObjectOfType<MapGrid>().getCellValue(m_position) / 1000 == 0
+               || GameObject.FindObjectOfType<MapGrid>().getCellValue(m_position) / 1000 == 3)
+                transform.position = m_position;
+            else
+                m_position = transform.position;
+        }
+        else if( !m_isDark || !m_isBright)
+        {
+            if (GameObject.FindObjectOfType<MapGrid>().getCellValue(m_position) / 1000 == 0)
+                transform.position = m_position;
+            else
+                m_position = transform.position;
+        }
+
+    }
 }

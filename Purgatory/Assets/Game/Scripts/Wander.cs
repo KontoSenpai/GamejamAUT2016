@@ -25,13 +25,11 @@ public class Wander : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
-
-
+	void Update ()
+    {
 
         if (isWandering && Vector2.Distance(transform.position, destination) < 0.1f)
             StopWandering();
-
 	}
 
 
