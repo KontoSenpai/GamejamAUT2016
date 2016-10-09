@@ -21,6 +21,11 @@ public class Soul : Character {
         wander = GetComponent<Wander>();
         Animator animator = GetComponent<Animator>();
         animator.runtimeAnimatorController = apparence[0];
+
+        Color cool = GetComponent<SpriteRenderer>().material.color;
+        cool.a = 0.7f;
+        GetComponent<SpriteRenderer>().material.color = cool;
+
         setIsBright(false);
         setIsDark(false);
     }
@@ -48,6 +53,10 @@ public class Soul : Character {
             Animator animator = GetComponent<Animator>();
             animator.runtimeAnimatorController = apparence[2];
             GetComponent<Seeker>().seek(m_map.getAngelBaseCoord());
+
+            Color cool = GetComponent<SpriteRenderer>().material.color;
+            cool.a = 0.7f;
+            GetComponent<SpriteRenderer>().material.color = cool;
         }
         else if (!projectileOwner && !getIsDark())
         {
@@ -58,6 +67,10 @@ public class Soul : Character {
             Animator animator = GetComponent<Animator>();
             animator.runtimeAnimatorController = apparence[1];
             GetComponent<Seeker>().seek(m_map.getDemonBaseCoord());
+ 
+            Color cool = GetComponent<SpriteRenderer>().material.color;
+            cool.a = 0.7f;
+            GetComponent<SpriteRenderer>().material.color = cool;
         }
     }
 
