@@ -30,7 +30,11 @@ public class PlayerInventory : MonoBehaviour
         isBright = GetComponent<Player>().getIsBright();
         if ( itemInInventory != null)
         {
-            GameObject objectPlaced = (GameObject)Instantiate(itemInInventory, transform.position, transform.rotation);
+            isBright = GetComponent<Player>().getIsBright();
+
+            GameObject objectPlaced = (GameObject)Instantiate(itemInInventory,
+                GameObject.FindObjectOfType<MapGrid>().getCenterOfCell(transform.position),
+                Quaternion.identity);
             if (objectPlaced.tag == "Mine")
                 DeployMine(objectPlaced);
             if (objectPlaced.tag == "Tower")

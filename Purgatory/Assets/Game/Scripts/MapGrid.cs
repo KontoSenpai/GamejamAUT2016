@@ -78,6 +78,13 @@ public class MapGrid : MonoBehaviour {
         return mapGrid[x][y];
     }
 
+    public Vector2 getCenterOfCell(Vector2 worldPos)
+    {
+        Vector2 matrixCoords = getCellCoord(worldPos);
+
+        return getCenterOfCell((uint)matrixCoords.x, (uint)matrixCoords.y);
+    }
+
     public Vector2 getCenterOfCell(uint x, uint y)
     {
         return new Vector2(xMin + (y * cellWidth + (float)cellWidth / 2),
