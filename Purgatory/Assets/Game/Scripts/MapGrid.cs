@@ -22,6 +22,9 @@ public class MapGrid : MonoBehaviour {
     private float cellWidth;
     private float cellHeight;
 
+    private Vector2 angelBaseCoord;
+    private Vector2 demonBaseCoord;
+
     // Use this for initialization
     void Start () {
 
@@ -191,6 +194,9 @@ public class MapGrid : MonoBehaviour {
         angelBaseTile.transform.localScale = new Vector3(cellWidth / angelBaseTile.GetComponent<SpriteRenderer>().sprite.bounds.size.x,
                                                          cellHeight / angelBaseTile.GetComponent<SpriteRenderer>().sprite.bounds.size.y,
                                                           0);
+
+        angelBaseCoord = getCenterOfCell(angelBaseRow, angelBaseColumn);
+
         Instantiate(angelBaseTile, 
                     new Vector3(xMin + angelBaseColumn * cellWidth + cellWidth/2, yMax - angelBaseRow * cellHeight - cellHeight/2, 0), 
                     Quaternion.identity);
@@ -200,6 +206,9 @@ public class MapGrid : MonoBehaviour {
         demonBaseTile.transform.localScale = new Vector3(cellWidth / demonBaseTile.GetComponent<SpriteRenderer>().sprite.bounds.size.x,
                                                          cellHeight / demonBaseTile.GetComponent<SpriteRenderer>().sprite.bounds.size.y,
                                                           0);
+
+        demonBaseCoord = getCenterOfCell(demonBaseRow, demonBaseColumn);
+
         Instantiate(demonBaseTile,
                     new Vector3(xMin + demonBaseColumn * cellWidth + cellWidth / 2, yMax - demonBaseRow * cellHeight - cellHeight / 2, 0),
                     Quaternion.identity);
@@ -255,5 +264,15 @@ public class MapGrid : MonoBehaviour {
         setPickUpSpawnerTile(10, 9);
         setPickUpSpawnerTile(11, 1);
 
+    }
+
+    public Vector2 getAngelBaseCoord()
+    {
+        return angelBaseCoord;
+    }
+
+    public Vector2 getDemonBaseCoord()
+    {
+        return demonBaseCoord;
     }
 }
