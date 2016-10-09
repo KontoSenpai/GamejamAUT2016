@@ -173,7 +173,7 @@ public class Player : Character {
             if (m_playerIdentifier == 1)
             {
 
-                player = InputManager.Devices[(int)m_playerIdentifier];
+                player = InputManager.Devices[0];
 
                 if (player.LeftStickX > 0.5)
                     moveRight();
