@@ -41,7 +41,7 @@ public class Soul : Character {
     public void Hit(bool projectileOwner)
     {
         SpriteRenderer sprite = GetComponent<SpriteRenderer>();
-        if ( projectileOwner)
+        if ( projectileOwner && !getIsBright())
         {
             setIsDark(false);
             setIsBright(true);

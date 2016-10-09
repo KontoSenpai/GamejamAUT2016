@@ -125,9 +125,12 @@ public class Wander : MonoBehaviour {
     public void StopWandering()
     {
 
-        GetComponent<Soul>().stopMovement();
+        if (isWandering)
+        {
+            GetComponent<Soul>().stopMovement();
 
-        isWandering = false;
+            isWandering = false;
+        }
 
     }
 
