@@ -18,8 +18,6 @@ public class Character : MonoBehaviour {
 
     protected void Start () {
 
-        m_position = basePosition;
-
         m_spriteDirection = Constants.DOWN;
 
         m_animator = GetComponent<Animator>();
