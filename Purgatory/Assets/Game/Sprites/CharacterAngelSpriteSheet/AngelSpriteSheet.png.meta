@@ -1,9 +1,25 @@
 fileFormatVersion: 2
 guid: a81048054be70ad4baa1d2b93dde8919
-timeCreated: 1475996464
+timeCreated: 1476004741
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: AngelSpriteSheet_0
+    21300002: AngelSpriteSheet_1
+    21300004: AngelSpriteSheet_2
+    21300006: AngelSpriteSheet_3
+    21300008: AngelSpriteSheet_4
+    21300010: AngelSpriteSheet_5
+    21300012: AngelSpriteSheet_6
+    21300014: AngelSpriteSheet_7
+    21300016: AngelSpriteSheet_8
+    21300018: AngelSpriteSheet_9
+    21300020: AngelSpriteSheet_10
+    21300022: AngelSpriteSheet_11
+    21300024: AngelSpriteSheet_12
+    21300026: AngelSpriteSheet_13
+    21300028: AngelSpriteSheet_14
+    21300030: AngelSpriteSheet_15
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -51,7 +67,215 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: AngelSpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 197
+        width: 79
+        height: 52
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: AngelSpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 197
+        width: 67
+        height: 53
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: AngelSpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 197
+        width: 79
+        height: 52
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: AngelSpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 197
+        width: 67
+        height: 53
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: AngelSpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 133
+        width: 45
+        height: 47
+      alignment: 9
+      pivot: {x: 0.25, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: AngelSpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 133
+        width: 48
+        height: 46
+      alignment: 9
+      pivot: {x: 0.25, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: AngelSpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 133
+        width: 45
+        height: 47
+      alignment: 9
+      pivot: {x: 0.25, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: AngelSpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 132
+        width: 48
+        height: 46
+      alignment: 9
+      pivot: {x: 0.25, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: AngelSpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 69
+        width: 45
+        height: 47
+      alignment: 9
+      pivot: {x: 0.75, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: AngelSpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 69
+        width: 48
+        height: 46
+      alignment: 9
+      pivot: {x: 0.75, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: AngelSpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 69
+        width: 45
+        height: 47
+      alignment: 9
+      pivot: {x: 0.75, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: AngelSpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 68
+        width: 48
+        height: 46
+      alignment: 9
+      pivot: {x: 0.75, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: AngelSpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 3
+        width: 79
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: AngelSpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 3
+        width: 65
+        height: 52
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: AngelSpriteSheet_14
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 3
+        width: 79
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: AngelSpriteSheet_15
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 3
+        width: 65
+        height: 52
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
