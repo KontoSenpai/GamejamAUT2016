@@ -1,4 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: 3009a2fdc56e60446b4f5c9f2b696f3b
+timeCreated: 1475996305
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName: {}
+=======
 guid: 23f723f55c5774be78fb44495e22c15c
 timeCreated: 1475995485
 licenseType: Free
@@ -12,6 +19,7 @@ TextureImporter:
     21300010: WhiteWanderers_5
     21300012: WhiteWanderers_6
     21300014: WhiteWanderers_7
+>>>>>>> b56355e43d937b1c126de3080b9479524ea1500e
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -37,8 +45,13 @@ TextureImporter:
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
+<<<<<<< HEAD
+    filterMode: -1
+    aniso: -1
+=======
     filterMode: 0
     aniso: 16
+>>>>>>> b56355e43d937b1c126de3080b9479524ea1500e
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -46,7 +59,11 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
+<<<<<<< HEAD
+  spriteMode: 1
+=======
   spriteMode: 2
+>>>>>>> b56355e43d937b1c126de3080b9479524ea1500e
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -59,6 +76,9 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2
+<<<<<<< HEAD
+    sprites: []
+=======
     sprites:
     - serializedVersion: 2
       name: WhiteWanderers_0
@@ -164,6 +184,7 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
+>>>>>>> b56355e43d937b1c126de3080b9479524ea1500e
     outline: []
   spritePackingTag: 
   userData: 
