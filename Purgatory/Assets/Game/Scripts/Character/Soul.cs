@@ -20,7 +20,6 @@ public class Soul : Character {
         timer = Time.time;
         m_map = GameObject.FindObjectOfType<MapGrid>();
         wander = GetComponent<Wander>();
-
         Animator animator = GetComponent<Animator>();
         animator.runtimeAnimatorController = apparence[0];
         setIsBright(false);
@@ -47,7 +46,8 @@ public class Soul : Character {
             setIsDark(false);
             setIsBright(true);
             wander.StopWandering();
-            //sprite.sprite = apparence[2];
+            Animator animator = GetComponent<Animator>();
+            animator.runtimeAnimatorController = apparence[2];
             GetComponent<Seeker>().seek(m_map.getAngelBaseCoord());
         }
         else
@@ -55,7 +55,8 @@ public class Soul : Character {
             setIsDark(true);
             setIsBright(false);
             wander.StopWandering();
-            //sprite.sprite = apparence[1];
+            Animator animator = GetComponent<Animator>();
+            animator.runtimeAnimatorController = apparence[1];
             GetComponent<Seeker>().seek(m_map.getDemonBaseCoord());
         }
     }
