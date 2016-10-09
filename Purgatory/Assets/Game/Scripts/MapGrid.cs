@@ -10,7 +10,8 @@ public class MapGrid : MonoBehaviour {
     public float yMin;
     public float yMax;
 
-    public GameObject backgroundTile;
+    public GameObject backgroundAngelTile;
+    public GameObject backgroundDemonTile;
     public GameObject[] obstacleTile;
     public GameObject angelBaseTile;
     public GameObject demonBaseTile;
@@ -112,6 +113,7 @@ public class MapGrid : MonoBehaviour {
 
     public void gridSetup()
     {
+        GameObject backgroundTile;
 
         cellWidth = (Mathf.Abs(xMin) + Mathf.Abs(xMax)) / column;
         cellHeight = (Mathf.Abs(yMin) + Mathf.Abs(yMax)) / row;
@@ -125,6 +127,21 @@ public class MapGrid : MonoBehaviour {
 
             for (uint j = 0; j < column; j++)
             {
+                if (j < 8)
+                {
+                    backgroundTile = backgroundAngelTile;
+                }
+                else if (j == 8)
+                {
+                    if (i % 2 == 0)
+                        backgroundTile = backgroundAngelTile;
+                    else
+                        backgroundTile = backgroundDemonTile;
+                }
+                else
+                {
+                    backgroundTile = backgroundDemonTile;
+                }
 
                 mapGrid[i][j] = Constants.EMPTY;
 
