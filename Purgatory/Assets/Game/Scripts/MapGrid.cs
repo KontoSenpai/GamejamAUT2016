@@ -208,9 +208,11 @@ public class MapGrid : MonoBehaviour {
 
     public void setWandererSpawnerTile(uint row, uint column)
     {
-        wandererSpawnerTile.transform.localScale = new Vector3(cellWidth / wandererSpawnerTile.GetComponent<SpriteRenderer>().sprite.bounds.size.x,
-                                                         cellHeight / wandererSpawnerTile.GetComponent<SpriteRenderer>().sprite.bounds.size.y,
-                                                          0);
+        if(wandererSpawnerTile.GetComponent<SpriteRenderer>().sprite)
+            wandererSpawnerTile.transform.localScale = new Vector3(cellWidth / wandererSpawnerTile.GetComponent<SpriteRenderer>().sprite.bounds.size.x,
+                                                                   cellHeight / wandererSpawnerTile.GetComponent<SpriteRenderer>().sprite.bounds.size.y,
+                                                                   0);
+
         Instantiate(wandererSpawnerTile,
                     new Vector3(xMin + column * cellWidth, yMax - row * cellHeight, 0),
                     Quaternion.identity);
@@ -233,9 +235,11 @@ public class MapGrid : MonoBehaviour {
     
     public void setPickUpSpawnerTile(uint row, uint column)
     {
-        pickUpSpawnerTile.transform.localScale = new Vector3(cellWidth / pickUpSpawnerTile.GetComponent<SpriteRenderer>().sprite.bounds.size.x,
-                                                             cellHeight / pickUpSpawnerTile.GetComponent<SpriteRenderer>().sprite.bounds.size.y,
-                                                             0);
+        if(pickUpSpawnerTile.GetComponent<SpriteRenderer>().sprite)
+            pickUpSpawnerTile.transform.localScale = new Vector3(cellWidth / pickUpSpawnerTile.GetComponent<SpriteRenderer>().sprite.bounds.size.x,
+                                                                 cellHeight / pickUpSpawnerTile.GetComponent<SpriteRenderer>().sprite.bounds.size.y,
+                                                                 0);
+
         Instantiate(pickUpSpawnerTile,
                     new Vector3(xMin + column * cellWidth, yMax - row * cellHeight, 0),
                     Quaternion.identity);
