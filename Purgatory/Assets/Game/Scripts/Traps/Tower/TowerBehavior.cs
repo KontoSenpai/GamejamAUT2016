@@ -39,7 +39,6 @@ public class TowerBehavior : MonoBehaviour {
         {
             if(Time.time - lastShotTime >= Constants.TOWER_RATE_OF_FIRE)
             {
-                print("Tower Behavior - calling a shoot");
                 ShootTarget();
             }
         }
@@ -53,7 +52,6 @@ public class TowerBehavior : MonoBehaviour {
     public void SetOwner(bool bright)
     {
         SpriteRenderer sprite = GetComponent<SpriteRenderer>();
-        print("Placed tower");
         if (!bright)
         {
             sprite.sprite = towerType[0];

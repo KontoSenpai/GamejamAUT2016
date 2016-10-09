@@ -20,12 +20,10 @@ public class WanderersInRadius : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-	
 	}
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        print("I have someone");
         if( other.gameObject.tag == "Wanderer" && wanderersInRadius.IndexOf(other.gameObject) == -1)
         {
             wanderersInRadius.Add(other.gameObject);
@@ -34,7 +32,6 @@ public class WanderersInRadius : MonoBehaviour {
 
     void OnTriggerStay2D(Collider2D other)
     {
-        print("I have someone");
         if (other.gameObject.tag == "Wanderer" && wanderersInRadius.IndexOf( other.gameObject) == -1)
         {
             wanderersInRadius.Add(other.gameObject);

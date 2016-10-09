@@ -7,6 +7,8 @@ public class MineBehavior : MonoBehaviour {
     // 0 = Demon
     // 1 = Holy
     public Sprite[] mineType;
+    public GameObject[] remnantType;
+
     private bool isOwnerDark = false;
     private bool isOwnerBright = false;
 
@@ -56,6 +58,7 @@ public class MineBehavior : MonoBehaviour {
                     Soul soulScript = wanderersInExplosionRadius[i].GetComponent<Soul>();
                     soulScript.Hit(isOwnerBright);
                 }
+                Instantiate(remnantType[1], transform.position, transform.rotation);
                 Destroy(gameObject);
             }
             else if( isOwnerDark == true && ( soul.getIsBright() || ( !soul.getIsBright() && !soul.getIsDark() )))
@@ -68,6 +71,7 @@ public class MineBehavior : MonoBehaviour {
                     Soul soulScript = wanderersInExplosionRadius[i].GetComponent<Soul>();
                     soulScript.Hit(isOwnerBright);
                 }
+                Instantiate(remnantType[0], transform.position, transform.rotation);
                 Destroy(gameObject);
             }
         }
