@@ -50,7 +50,7 @@ public class Soul : Character {
             animator.runtimeAnimatorController = apparence[2];
             GetComponent<Seeker>().seek(m_map.getAngelBaseCoord());
         }
-        else
+        else if (!projectileOwner && !getIsDark())
         {
             setIsDark(true);
             setIsBright(false);

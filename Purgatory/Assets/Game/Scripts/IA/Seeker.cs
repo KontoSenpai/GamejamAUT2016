@@ -172,7 +172,10 @@ public class Seeker : MonoBehaviour {
                 break;
             if ((pathValue = buildPath(adjacent.pos, destination, iter + 1)) != -1)
                 if (pathValue <= bestPath)
+                {
                     bestPath = pathValue;
+                    break;
+                }
         }
 
         if (bestPath != 9999)
