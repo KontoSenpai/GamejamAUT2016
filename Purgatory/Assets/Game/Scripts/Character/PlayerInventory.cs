@@ -18,7 +18,6 @@ public class PlayerInventory : MonoBehaviour
     public void AddInventory(GameObject trap)
     {
         itemInInventory = trap;
-        print(itemInInventory.tag);
     }
 
     public GameObject GetItemInInventory()

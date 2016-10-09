@@ -6,7 +6,7 @@ public class Soul : Character {
     // 0 : Neutral
     // 1 : Dark
     // 2 : Bright
-    public Sprite[] apparence;
+    public RuntimeAnimatorController[] apparence;
 
     private float timer;
     private Wander wander;
@@ -19,9 +19,10 @@ public class Soul : Character {
         base.Start();
         timer = Time.time;
         m_map = GameObject.FindObjectOfType<MapGrid>();
-
         wander = GetComponent<Wander>();
 
+        Animator animator = GetComponent<Animator>();
+        animator.runtimeAnimatorController = apparence[0];
         setIsBright(false);
         setIsDark(false);
     }
@@ -29,17 +30,13 @@ public class Soul : Character {
     // Update is called once per frame
     new void Update ()
     {
-
         if (!getIsDark() && !getIsBright())
             if (Time.time - timer >= Constants.WANDER_DELAY)
             {
                 wander.Wandering();
                 timer = Time.time;
             }
-
-
         base.Update();
-
     }
 
     public void Hit(bool projectileOwner)
@@ -49,14 +46,16 @@ public class Soul : Character {
         {
             setIsDark(false);
             setIsBright(true);
-            sprite.sprite = apparence[2];
+            wander.StopWandering();
+            //sprite.sprite = apparence[2];
             GetComponent<Seeker>().seek(m_map.getAngelBaseCoord());
         }
         else
         {
             setIsDark(true);
             setIsBright(false);
-            sprite.sprite = apparence[1];
+            wander.StopWandering();
+            //sprite.sprite = apparence[1];
             GetComponent<Seeker>().seek(m_map.getDemonBaseCoord());
         }
     }

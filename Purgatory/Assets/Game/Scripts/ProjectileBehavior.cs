@@ -37,15 +37,15 @@ public class ProjectileBehavior : MonoBehaviour {
     void Update()
     {
         if (Time.time - creationTime >= Constants.PLAYER_PROJECTILE_LIFESPAN)
-        {
             Destroy(gameObject);
-        }
+
+        // Un joueur
         if (ownerType == false)
         {
             float step = Constants.PLAYER_PROJECTILE_SPEED * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, transform.position+projectileDirection, step);
         }
-        else
+        else // Une tour
         {
             if (target != null)
             {
@@ -54,15 +54,32 @@ public class ProjectileBehavior : MonoBehaviour {
                     float step = Constants.TOWER_PROJECTILE_SPEED * Time.deltaTime;
                     transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
                 }
-                else
-                {
-                    target.GetComponent<Soul>().Hit(ownerSide);
-                    gameObject.transform.parent.GetComponent<TowerBehavior>().ResetAggro();
-                    Destroy(gameObject);
-                }
             }
         }
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(ownerType == true)
+        {
+            if (other.gameObject == target)
+            {
+                target.GetComponent<Soul>().Hit(ownerSide);
+                gameObject.transform.parent.GetComponent<TowerBehavior>().ResetAggro();
+                Destroy(gameObject);
+            }
+        }
+        else
+        {
+            if( other.tag == "Wanderer")
+            {
+                other.GetComponent<Soul>().Hit(ownerSide);
+                Destroy(gameObject);
+            }
+        }
+
+    }
+
 
     public void SetTargetPosition(Vector3 target)
     {

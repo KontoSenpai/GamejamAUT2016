@@ -6,10 +6,11 @@ public class WanderersInRadius : MonoBehaviour {
 
     private List<GameObject> wanderersInRadius;
 
-    public List<GameObject> wanderers
+    public List<GameObject> GetWanderers()
     {
-        get { return wanderersInRadius; }
+        return wanderersInRadius;
     }
+
 	// Use this for initialization
 	void Start ()
     {
@@ -17,13 +18,24 @@ public class WanderersInRadius : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 	
 	}
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if( other.gameObject.tag == "Wanderers")
+        print("I have someone");
+        if( other.gameObject.tag == "Wanderer" && wanderersInRadius.IndexOf(other.gameObject) == -1)
+        {
+            wanderersInRadius.Add(other.gameObject);
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        print("I have someone");
+        if (other.gameObject.tag == "Wanderer" && wanderersInRadius.IndexOf( other.gameObject) == -1)
         {
             wanderersInRadius.Add(other.gameObject);
         }
@@ -31,7 +43,7 @@ public class WanderersInRadius : MonoBehaviour {
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Wanderers")
+        if (other.gameObject.tag == "Wanderer")
         {
             wanderersInRadius.Remove(other.gameObject);
         }
