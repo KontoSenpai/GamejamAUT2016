@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class LoadOnClick : MonoBehaviour {
 
@@ -8,7 +9,7 @@ public class LoadOnClick : MonoBehaviour {
 	// Use this for initialization
 	public void LoadScene (int level) {
 		loadingImage.SetActive (true);
-		Application.LoadLevel(level);
+		SceneManager.LoadScene(level);
 	}
 	
 	// Update is called once per frame

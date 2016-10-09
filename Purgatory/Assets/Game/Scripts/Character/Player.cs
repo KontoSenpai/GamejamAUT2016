@@ -222,7 +222,7 @@ public class Player : Character {
 
         Vector3 projectileInitialPosition = new Vector3();
         projectileInitialPosition = transform.position;
-        projectileInitialPosition.y += 2.5f;
+        projectileInitialPosition.y += 1.5f;
         GameObject instantiatedProjectile = (GameObject)Instantiate (projectile, projectileInitialPosition, transform.rotation);
 
         if(getIsBright())
