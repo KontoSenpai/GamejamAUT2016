@@ -24,42 +24,17 @@ public class Soul : Character {
     // Update is called once per frame
     new void Update ()
     {
-        if(!isWandering)
-        {
-            isWandering = true;
-            wander.Wandering();
-        }
+
+        if (!getIsDark() && !getIsBright())
+            if (Time.time - timer >= Constants.WANDER_DELAY)
+            {
+                wander.Wandering();
+                timer = Time.time;
+            }
+
 
         base.Update();
 
-        /*if (!getIsDark() && !getIsBright())
-            if (Time.time - timer >= 2.0f)
-            {
-                stopMovement();
-                Wander();
-                timer = Time.time;
-            }*/
-	}
-
-    public void Wander()
-    {
-        uint rand = (uint)Random.Range(0, 4);
-
-        switch(rand)
-        {
-            case Constants.UP:
-                moveUp();
-                break;
-            case Constants.DOWN:
-                moveDown();
-                break;
-            case Constants.LEFT:
-                moveLeft();
-                break;
-            case Constants.RIGHT:
-                moveRight();
-                break;
-        }
     }
 
     public void Hit(bool projectileOwner)

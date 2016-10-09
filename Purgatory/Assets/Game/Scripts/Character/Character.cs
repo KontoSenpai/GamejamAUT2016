@@ -59,8 +59,10 @@ public class Character : MonoBehaviour {
     public Vector2 getPosition()        { return m_position; }
     public Vector2 getVelocity()        { return m_velocity; }
     public uint getSpriteDirection()    { return m_spriteDirection; }
-    public bool getIsDark()            { return m_isDark; }
-    public bool getIsBright()            { return m_isBright; }
+    public bool getIsDark()             { return m_isDark; }
+    public bool getIsBright()           { return m_isBright; }
+
+    public bool getIsMoving()           { return m_velocity.magnitude != 0; } 
 
         // ** Setters **
     public void setPosition(Vector2 position)               { m_position = position; }
