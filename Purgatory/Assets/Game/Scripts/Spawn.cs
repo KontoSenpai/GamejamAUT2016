@@ -21,6 +21,7 @@ public class Spawn : MonoBehaviour {
 
         timerWanderer = Time.time;
         timerPickUp = Time.time;
+        SpawnPickUp();
 	}
 	
 	// Update is called once per frame
