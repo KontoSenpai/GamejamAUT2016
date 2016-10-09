@@ -1,4 +1,5 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 067be27c9f72645c5be0a01781426322
 timeCreated: 1475992452
 licenseType: Free
@@ -12,6 +13,18 @@ TextureImporter:
     21300010: BlueWanderers_5
     21300012: BlueWanderers_6
     21300014: BlueWanderers_7
+=======
+<<<<<<< HEAD
+guid: ea206c75d0515d043b02187b4e220fc3
+timeCreated: 1475990286
+=======
+guid: 118c967bb5060a7479e3a18da065b6cd
+timeCreated: 1475990612
+>>>>>>> 77b49e6b423858b9b58c1152cb86df2c2a7b9e01
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName: {}
+>>>>>>> 820b3d79bcbd112e40920d444878e3f9ab73de9e
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -37,8 +50,13 @@ TextureImporter:
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
+<<<<<<< HEAD
     filterMode: 0
     aniso: 16
+=======
+    filterMode: -1
+    aniso: -1
+>>>>>>> 820b3d79bcbd112e40920d444878e3f9ab73de9e
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -46,7 +64,11 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
+<<<<<<< HEAD
   spriteMode: 2
+=======
+  spriteMode: 1
+>>>>>>> 820b3d79bcbd112e40920d444878e3f9ab73de9e
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -59,6 +81,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2
+<<<<<<< HEAD
     sprites:
     - serializedVersion: 2
       name: BlueWanderers_0
@@ -164,6 +187,9 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
+=======
+    sprites: []
+>>>>>>> 820b3d79bcbd112e40920d444878e3f9ab73de9e
     outline: []
   spritePackingTag: 
   userData: 
