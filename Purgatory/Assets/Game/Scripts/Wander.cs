@@ -38,7 +38,6 @@ public class Wander : MonoBehaviour {
     public void Wandering()
     {
         Vector2 objectCellCoord = m_map.getCellCoord(transform.position);
-        print(objectCellCoord);
 
         possibleCases.Clear();
 
