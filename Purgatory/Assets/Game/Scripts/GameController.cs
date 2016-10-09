@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
     public float lengthOfGameInMinutes;
+	public Text angelScoreText;
+	public Text demonScoreText;
+
 
     private static uint scoreAngel;
     private static uint scoreDemon;
@@ -13,7 +17,8 @@ public class GameController : MonoBehaviour {
 	void Start () {
 
         timeRemaining = 60.0f * lengthOfGameInMinutes;
-
+	//	scoreAngel = 0;
+	//	scoreDemon = 0;
 	}
 	
 	// Update is called once per frame
@@ -22,6 +27,9 @@ public class GameController : MonoBehaviour {
         timeRemaining -= Time.deltaTime;
         if (timeRemaining <= 0.0f)
             GameOver();
+
+		angelScoreText.text = "" + scoreAngel;
+		demonScoreText.text = "" + scoreDemon;
 	}
 
     public void gainScoreAngel(uint value)
