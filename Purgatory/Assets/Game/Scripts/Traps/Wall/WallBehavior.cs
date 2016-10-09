@@ -7,19 +7,28 @@ public class WallBehavior : MonoBehaviour {
     // 1 : Holy
     public RuntimeAnimatorController[] animatorSprites;
 
+    private float lifeStart;
+
     private bool isOwnerDark = false;
     private bool isOwnerBright = false;
 
     // Use this for initialization
     void Start ()
     {
-	
+
+        lifeStart = Time.deltaTime;
+
+        GameObject.FindObjectOfType<MapGrid>();
+
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-	
+
+        if (Time.deltaTime - lifeStart >= Constants.TOWER_LIFETIME)
+            Destroy(gameObject);
+
 	}
 
     public void SetOwner(bool bright)
