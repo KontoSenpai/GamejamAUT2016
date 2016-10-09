@@ -17,7 +17,7 @@ public class WallBehavior : MonoBehaviour
     void Start()
     {
 
-        lifeStart = Time.deltaTime;
+        lifeStart = Time.time;
 
     }
 
@@ -25,7 +25,7 @@ public class WallBehavior : MonoBehaviour
     void Update()
     {
 
-        if (Time.deltaTime - lifeStart >= Constants.TOWER_LIFETIME)
+        if (Time.time - lifeStart >= Constants.TOWER_LIFETIME)
         {
 
             if( isOwnerDark)

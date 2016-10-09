@@ -8,7 +8,7 @@ public class PlayerInventory : MonoBehaviour
 
     void Start()
     {
-        isBright = GetComponent<Player>().getIsBright();
+        
     }
 	// Update is called once per frame
 	void Update()
@@ -27,7 +27,8 @@ public class PlayerInventory : MonoBehaviour
 
     public void UseItem()
     {
-        if( itemInInventory != null)
+        isBright = GetComponent<Player>().getIsBright();
+        if ( itemInInventory != null)
         {
             GameObject objectPlaced = (GameObject)Instantiate(itemInInventory, transform.position, transform.rotation);
             if (objectPlaced.tag == "Mine")
