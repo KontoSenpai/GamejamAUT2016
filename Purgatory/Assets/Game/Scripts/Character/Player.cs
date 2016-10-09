@@ -5,16 +5,15 @@ using InControl;
 public class Player : Character {
 
 	public GameObject[] shoot;
-	private GameObject shootingProjectile;
+	private GameObject projectile;
 	private Transform shootSpawn;
 
-	//private Vector3 velocity = Vector3.zero;
-
-	public float fireRate;
+    private bool isPressed = false;
 
 	private Vector3 velocity = Vector3.zero;
 
 	private float nextFire;
+    private float fireCD;
 
     private uint m_playerIdentifier;
 
@@ -30,13 +29,13 @@ public class Player : Character {
         base.Start();
         if (gameObject.name.Contains("Angel"))
         {
-            shootingProjectile = shoot[1];
+            projectile = shoot[1];
             setIsBright(true);
             m_playerIdentifier = Constants.ANGEL;
         }
         else if (gameObject.name.Contains("Demon"))
         {
-            shootingProjectile = shoot[0];
+            projectile = shoot[0];
             setIsDark(true);
             m_playerIdentifier = Constants.DEMON;
         }
@@ -63,33 +62,20 @@ public class Player : Character {
         {
             player = InputManager.Devices[(int)xboxControllerIndices[(int)m_playerIdentifier - 1]];
 
-            if (player.LeftStickX > 0.5)
-                moveRight();
-            else if (player.LeftStickX < -0.5)
-                moveLeft();
-            else if (player.LeftStickX < 0.5 &&
-                    player.LeftStickX > -0.5)
-                stopHorizontalMovement();
+            PlayerMovement(player);
 
-            if (player.LeftStickY > 0.5)
-                moveUp();
-            else if (player.LeftStickY < -0.5)
-                moveDown();
-            else if (player.LeftStickY < 0.5 &&
-                     player.LeftStickY > -0.5)
-                stopVerticalMovement();
-
+            if (player.Action1 == true && isPressed == false)
+            {
+                GetComponent<PlayerInventory>().UseItem();
+                isPressed = true;
+            }
+            else if( player.Action1 == false && isPressed == true)
+                isPressed = false;
 
             //To limit the fire rate
-            if (Time.time > nextFire)
+            if (Time.time - fireCD >= Constants.PLAYER_RATE_OF_FIRE)
             {
-                nextFire = Time.time + Constants.PLAYER_RATE_OF_FIRE;
-                //Shooting with the right joystick
-                if (player.RightStickX != 0 || player.RightStickY != 0)
-                {
-                    Vector3 jShootingDirection = new Vector3(player.RightStickX, player.RightStickY, 0.0f);
-                    aimNShoot(jShootingDirection);
-                }
+                PlayerFireHandle(player);
             }
         }
         //----------------------
@@ -98,24 +84,17 @@ public class Player : Character {
         {
             if (m_playerIdentifier == 1)
             {
-
                 player = InputManager.Devices[(int)xboxControllerIndices[0]];
 
-                if (player.LeftStickX > 0.5)
-                    moveRight();
-                else if (player.LeftStickX < -0.5)
-                    moveLeft();
-                else if (player.LeftStickX < 0.5 &&
-                        player.LeftStickX > -0.5)
-                    stopHorizontalMovement();
+                PlayerMovement(player);
 
-                if (player.LeftStickY > 0.5)
-                    moveUp();
-                else if (player.LeftStickY < -0.5)
-                    moveDown();
-                else if (player.LeftStickY < 0.5 &&
-                         player.LeftStickY > -0.5)
-                    stopVerticalMovement();
+                if (player.Action1 == true && isPressed == false)
+                {
+                    GetComponent<PlayerInventory>().UseItem();
+                    isPressed = true;
+                }
+                else if (player.Action1 == false && isPressed == true)
+                    isPressed = false;
             }
             else
             {
@@ -177,8 +156,52 @@ public class Player : Character {
     }
     
 
-	//public void aimNShoot(float rightStickX, float rightStickY) {
-	public void aimNShoot(Vector3 shootingDir) {
+    public void PlayerMovement(InputDevice player)
+    {
+        if (player.LeftStickX > 0.5)
+            moveRight();
+        else if (player.LeftStickX < -0.5)
+            moveLeft();
+        else if (player.LeftStickX < 0.5 &&
+                player.LeftStickX > -0.5)
+            stopHorizontalMovement();
+
+        if (player.LeftStickY > 0.5)
+            moveUp();
+        else if (player.LeftStickY < -0.5)
+            moveDown();
+        else if (player.LeftStickY < 0.5 &&
+                 player.LeftStickY > -0.5)
+            stopVerticalMovement();
+    }
+
+    public void PlayerFireHandle( InputDevice player)
+    {
+        Vector3 pute = new Vector3();
+        pute = Vector3.zero;
+
+        //Shooting with the right joystick
+        if (player.RightStick.X >= 0.3)
+            pute.x = 1;
+        else if (player.RightStick.X <= -0.3)
+            pute.x = -1;
+        if (player.RightStick.Y >= 0.3)
+            pute.y = 1;
+        else if (player.RightStick.Y <= -0.3)
+            pute.y = -1;
+        if (pute.x != 0 || pute.y != 0)
+        {
+            print("J'aim"+pute);
+            aimNShoot(pute);
+            fireCD = Time.time;
+        }
+
+        //Vector3 jShootingDirection = new Vector3(player.RightStickX, player.RightStickY, 0.0f); 
+
+    }
+
+    //public void aimNShoot(float rightStickX, float rightStickY) {
+    public void aimNShoot(Vector3 shootingDir) {
 
         /*shootSpawn.position = gameObject.GetComponent<Transform>().position; 
 
@@ -188,9 +211,14 @@ public class Player : Character {
 		shootSpawn.rotation = Quaternion.Euler (shootSpawn.eulerAngles);
         */
 
-        GameObject projectile = (GameObject)Instantiate (shootingProjectile, transform.position, transform.rotation);
+        GameObject instantiatedProjectile = (GameObject)Instantiate (projectile, transform.position, transform.rotation);
 
-		projectile.GetComponent<ShootProjectile> ().SetTargetPosition(shootingDir);
+        if(getIsBright())
+            instantiatedProjectile.GetComponent<ProjectileBehavior>().SetOwner( true, false);
+        else if(getIsDark())
+            instantiatedProjectile.GetComponent<ProjectileBehavior>().SetOwner(false, false);
+
+        instantiatedProjectile.GetComponent<ProjectileBehavior> ().SetTargetPosition(shootingDir);
 
 	}
 
