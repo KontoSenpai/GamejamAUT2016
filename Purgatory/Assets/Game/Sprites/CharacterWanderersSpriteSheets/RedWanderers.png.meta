@@ -1,7 +1,6 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: 8db73b9d3493d4c0dbcdd68250a8caf1
-timeCreated: 1475992479
+timeCreated: 1475995468
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -13,18 +12,6 @@ TextureImporter:
     21300010: RedWanderers_5
     21300012: RedWanderers_6
     21300014: RedWanderers_7
-=======
-<<<<<<< HEAD
-guid: 0e8ac9bf19875e042a217c98dc06c8ee
-timeCreated: 1475990286
-=======
-guid: 059fba1f1457ff94587fee99fd568276
-timeCreated: 1475990612
->>>>>>> 77b49e6b423858b9b58c1152cb86df2c2a7b9e01
-licenseType: Free
-TextureImporter:
-  fileIDToRecycleName: {}
->>>>>>> 820b3d79bcbd112e40920d444878e3f9ab73de9e
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -50,13 +37,8 @@ TextureImporter:
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-<<<<<<< HEAD
     filterMode: 0
     aniso: 16
-=======
-    filterMode: -1
-    aniso: -1
->>>>>>> 820b3d79bcbd112e40920d444878e3f9ab73de9e
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -64,11 +46,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-<<<<<<< HEAD
   spriteMode: 2
-=======
-  spriteMode: 1
->>>>>>> 820b3d79bcbd112e40920d444878e3f9ab73de9e
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -81,7 +59,6 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2
-<<<<<<< HEAD
     sprites:
     - serializedVersion: 2
       name: RedWanderers_0
@@ -187,9 +164,6 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
-=======
-    sprites: []
->>>>>>> 820b3d79bcbd112e40920d444878e3f9ab73de9e
     outline: []
   spritePackingTag: 
   userData: 
