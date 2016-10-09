@@ -72,7 +72,6 @@ public class TowerBehavior : MonoBehaviour {
 
     void ShootTarget()
     {
-        print("Tower Behavior - Shooting a soul");
         GameObject projectile = (GameObject)Instantiate(shootingProjectile, transform.position, transform.rotation);
         projectile.transform.parent = gameObject.transform;
         if (isOwnerBright)
