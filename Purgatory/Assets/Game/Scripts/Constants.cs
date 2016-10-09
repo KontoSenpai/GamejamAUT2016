@@ -24,7 +24,7 @@ public static class Constants {
 
     public const float WANDER_DELAY = 2.5f;
 
-    public const uint WANDERER_SCORE = 100;
+    public const uint WANDERER_SCORE = 1;
 
     public const float TOWER_RATE_OF_FIRE = 1.00f;
     public const float TOWER_LIFETIME = 20.00f;

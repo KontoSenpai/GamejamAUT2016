@@ -57,7 +57,7 @@ public class Seeker : MonoBehaviour {
             }
             else
             {
-                uint value = m_map.getCellValue(new Vector2((uint)m_best.Peek().x, (uint)m_best.Peek().y));
+                uint value = m_map.getCellValue((uint)m_best.Peek().x, (uint)m_best.Peek().y);
                 if (value / 1000 == 1)
                     AStar(m_map.getCellCoord(transform.position), m_destination);
                 else if (value / 1000 == 2 && !GetComponent<Soul>().getIsBright())
