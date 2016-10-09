@@ -10,8 +10,6 @@ public class Player : Character {
 
     private bool isPressed = false;
 
-	private Vector3 velocity = Vector3.zero;
-
 	private float nextFire;
     private float fireCD;
 
@@ -75,7 +73,7 @@ public class Player : Character {
             //To limit the fire rate
             if (Time.time - fireCD >= Constants.PLAYER_RATE_OF_FIRE)
             {
-                PlayerFireHandle(player);
+                PlayerFireHandlePad(player);
             }
         }
         //----------------------
@@ -99,64 +97,48 @@ public class Player : Character {
             else
             {
                 //Input are arrow keys for player2
-
-                if (Input.GetAxis("HorizontalKey") > 0.5)
-                    moveRight();
-                else if (Input.GetAxis("HorizontalKey") < -0.5)
-                    moveLeft();
-                else if (Input.GetAxis("HorizontalKey") < 0.5 &&
-                        Input.GetAxis("HorizontalKey") > -0.5)
-                    stopHorizontalMovement();
-
-                if (Input.GetAxis("VerticalKey") > 0.5)
-                    moveUp();
-                else if (Input.GetAxis("VerticalKey") < -0.5)
-                    moveDown();
-                else if (Input.GetAxis("VerticalKey") < 0.5 &&
-                         Input.GetAxis("VerticalKey") > -0.5)
-                    stopVerticalMovement();
-                    
+                PlayerMovementKeyboard();
+                if (Input.GetKeyDown(KeyCode.F) && isPressed == false)
+                {
+                    GetComponent<PlayerInventory>().UseItem();
+                    isPressed = true;
+                }
+                else if (Input.GetKeyUp(KeyCode.F) && isPressed == true)
+                    isPressed = false;
             }
 
             //To limit the fire rate
-            if (Time.time > nextFire)
+            if (Time.time - fireCD >= Constants.PLAYER_RATE_OF_FIRE)
             {
-                nextFire = Time.time + Constants.PLAYER_RATE_OF_FIRE;
-
-                //Shooting with the right joystick
-                if (m_playerIdentifier == 1 && (player.RightStickX != 0 || player.RightStickY != 0))
-                {
-                    Vector3 jShootingDirection = new Vector3(player.RightStickX, player.RightStickY, 0.0f);
-                    aimNShoot(jShootingDirection);
-                }
-                else if (m_playerIdentifier == 2)
-                {
-                    if (Input.GetAxis("HorizontalAimingKey") != 0 || Input.GetAxis("VerticalAimingKey") != 0)
-                    {
-                        Vector3 kShootingDirection = new Vector3(Input.GetAxis("HorizontalAimingKey"), Input.GetAxis("VerticalAimingKey"), 0.0f);
-                        aimNShoot(kShootingDirection);
-                    }
-
-                    //Shooting with the mouse
-                    if (Input.GetMouseButton(0))
-                    {
-                        Vector3 mShootingDirection = Input.mousePosition;
-                        mShootingDirection.z = 10.0f;
-                        Debug.Log(Camera.main.ScreenToWorldPoint(mShootingDirection));
-                        mShootingDirection = Camera.main.ScreenToWorldPoint(mShootingDirection);
-                        mShootingDirection = mShootingDirection - transform.position;
-                        aimNShoot(mShootingDirection);
-                    }
-
-                }
+                if (m_playerIdentifier == 1)
+                    PlayerFireHandlePad(player);
+                else if( m_playerIdentifier == 2)
+                    PlayerFireHandleKeyboard();
             }
         }
-
         base.Update();
     }
     
+    private void PlayerMovementKeyboard()
+    {
+        if (Input.GetAxis("HorizontalKey") > 0.5)
+            moveRight();
+        else if (Input.GetAxis("HorizontalKey") < -0.5)
+            moveLeft();
+        else if (Input.GetAxis("HorizontalKey") < 0.5 &&
+                Input.GetAxis("HorizontalKey") > -0.5)
+            stopHorizontalMovement();
 
-    public void PlayerMovement(InputDevice player)
+        if (Input.GetAxis("VerticalKey") > 0.5)
+            moveUp();
+        else if (Input.GetAxis("VerticalKey") < -0.5)
+            moveDown();
+        else if (Input.GetAxis("VerticalKey") < 0.5 &&
+                 Input.GetAxis("VerticalKey") > -0.5)
+            stopVerticalMovement();
+    }
+
+    private void PlayerMovement(InputDevice player)
     {
         if (player.LeftStickX > 0.5)
             moveRight();
@@ -175,29 +157,57 @@ public class Player : Character {
             stopVerticalMovement();
     }
 
-    public void PlayerFireHandle( InputDevice player)
+    private void PlayerFireHandlePad( InputDevice player)
     {
-        Vector3 pute = new Vector3();
-        pute = Vector3.zero;
+        Vector3 direction = new Vector3();
 
         //Shooting with the right joystick
         if (player.RightStick.X >= 0.3)
-            pute.x = 1;
+            direction.x = 1;
         else if (player.RightStick.X <= -0.3)
-            pute.x = -1;
+            direction.x = -1;
         if (player.RightStick.Y >= 0.3)
-            pute.y = 1;
+            direction.y = 1;
         else if (player.RightStick.Y <= -0.3)
-            pute.y = -1;
-        if (pute.x != 0 || pute.y != 0)
+            direction.y = -1;
+        if (direction.x != 0 || direction.y != 0)
         {
-            print("J'aim"+pute);
-            aimNShoot(pute);
+            aimNShoot(direction);
             fireCD = Time.time;
         }
 
         //Vector3 jShootingDirection = new Vector3(player.RightStickX, player.RightStickY, 0.0f); 
 
+    }
+
+    private void PlayerFireHandleKeyboard()
+    {
+        Vector3 direction = new Vector3();
+        print(Input.GetAxis("HorizontalAimingKey"));
+        if( Input.GetAxis("HorizontalAimingKey") > 0.5)
+            direction.x = 1;
+        else if (Input.GetAxis("HorizontalAimingKey") < -0.5)
+            direction.x = -1;
+        if (Input.GetAxis("VerticalAimingKey") > 0.5)
+            direction.y = 1;
+        else if(Input.GetAxis("VerticalAimingKey") < -0.5)
+            direction.y = -1;
+        if( direction.x != 0 || direction.y != 0)
+        {
+            aimNShoot(direction);
+            fireCD = Time.time;
+        }
+        /*
+        //Shooting with the mouse
+        if (Input.GetMouseButton(0))
+        {
+            Vector3 mShootingDirection = Input.mousePosition;
+            mShootingDirection.z = 10.0f;
+            Debug.Log(Camera.main.ScreenToWorldPoint(mShootingDirection));
+            mShootingDirection = Camera.main.ScreenToWorldPoint(mShootingDirection);
+            mShootingDirection = mShootingDirection - transform.position;
+            aimNShoot(mShootingDirection);
+        }*/
     }
 
     //public void aimNShoot(float rightStickX, float rightStickY) {
