@@ -175,9 +175,6 @@ public class Player : Character {
             aimNShoot(direction);
             fireCD = Time.time;
         }
-
-        //Vector3 jShootingDirection = new Vector3(player.RightStickX, player.RightStickY, 0.0f); 
-
     }
 
     private void PlayerFireHandleKeyboard()
@@ -196,29 +193,10 @@ public class Player : Character {
             aimNShoot(direction);
             fireCD = Time.time;
         }
-        /*
-        //Shooting with the mouse
-        if (Input.GetMouseButton(0))
-        {
-            Vector3 mShootingDirection = Input.mousePosition;
-            mShootingDirection.z = 10.0f;
-            Debug.Log(Camera.main.ScreenToWorldPoint(mShootingDirection));
-            mShootingDirection = Camera.main.ScreenToWorldPoint(mShootingDirection);
-            mShootingDirection = mShootingDirection - transform.position;
-            aimNShoot(mShootingDirection);
-        }*/
     }
 
-    //public void aimNShoot(float rightStickX, float rightStickY) {
-    public void aimNShoot(Vector3 shootingDir) {
-
-        /*shootSpawn.position = gameObject.GetComponent<Transform>().position; 
-
-		shootSpawn.eulerAngles = new Vector3(transform.eulerAngles.x, Mathf.Atan2(mouse.x,  mouse.y) 
-			* Mathf.Rad2Deg, transform.eulerAngles.z);
-		
-		shootSpawn.rotation = Quaternion.Euler (shootSpawn.eulerAngles);
-        */
+    public void aimNShoot(Vector3 shootingDir)
+    {
 
         Vector3 projectileInitialPosition = new Vector3();
         projectileInitialPosition = transform.position;
@@ -230,6 +208,7 @@ public class Player : Character {
         else if(getIsDark())
             instantiatedProjectile.GetComponent<ProjectileBehavior>().SetOwner(false, false);
 
+        GetComponent<AudioSource>().Play();
         instantiatedProjectile.GetComponent<ProjectileBehavior> ().SetTargetPosition(shootingDir);
 
 	}
