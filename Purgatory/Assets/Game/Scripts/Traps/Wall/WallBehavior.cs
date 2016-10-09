@@ -28,9 +28,9 @@ public class WallBehavior : MonoBehaviour
         if (Time.deltaTime - lifeStart >= Constants.TOWER_LIFETIME)
         {
 
-            if (isOwnerDark)
+            if( isOwnerDark)
                 GameObject.FindObjectOfType<MapGrid>().substractValueToCell(transform.position, Constants.OBSTACLE_DARK);
-            else
+            else if( isOwnerBright)
                 GameObject.FindObjectOfType<MapGrid>().substractValueToCell(transform.position, Constants.OBSTACLE_BRIGHT);
 
             Destroy(gameObject);

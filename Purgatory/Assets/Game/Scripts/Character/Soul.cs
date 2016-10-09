@@ -17,9 +17,10 @@ public class Soul : Character {
     new void Start()
     {
         base.Start();
-        wander = GetComponent<Wander>();
         timer = Time.time;
         m_map = GameObject.FindObjectOfType<MapGrid>();
+
+        wander = GetComponent<Wander>();
 
         setIsBright(false);
         setIsDark(false);
