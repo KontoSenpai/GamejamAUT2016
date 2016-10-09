@@ -9,6 +9,7 @@ public class Wander : MonoBehaviour {
     List<Vector2> possibleCases;
 
     Vector2 destination;
+    Vector2 previousPosition;
 
     bool isWandering;
 
@@ -16,6 +17,7 @@ public class Wander : MonoBehaviour {
 	void Start () {
 	
         m_map = GameObject.FindObjectOfType<MapGrid>();
+        previousPosition = new Vector2();
 
         possibleCases = new List<Vector2>();
         isWandering = false;
@@ -25,8 +27,10 @@ public class Wander : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+
+
         if (isWandering && Vector2.Distance(transform.position, destination) < 0.1f)
-            Wandering();
+            StopWandering();
 
 	}
 
@@ -51,10 +55,10 @@ public class Wander : MonoBehaviour {
         foreach(Vector2 adjacent in listAdjacent)
         {
 
-            if ((adjacent.x >= 0 && adjacent.x < m_map.getColumn()) &&
-               (adjacent.y >= 0 && adjacent.y < m_map.getRow()) &&
-               m_map.getCellValue((uint)adjacent.x, (uint)adjacent.y) / 1000 == 0)
-                possibleCases.Add(adjacent);
+            if ((adjacent.x >= 0 && adjacent.x < m_map.getRow()) &&
+               (adjacent.y >= 0 && adjacent.y < m_map.getColumn()))
+                if(m_map.getCellValue((uint)adjacent.x, (uint)adjacent.y) / 1000 == 0)
+                    possibleCases.Add(adjacent);
 
         }
 
@@ -95,13 +99,20 @@ public class Wander : MonoBehaviour {
         //}
 
         //Choose a random cell in the list of possible cells
-        int rand = Random.Range(0, possibleCases.Count);
+        do
+        {
+            int rand = Random.Range(0, possibleCases.Count);
 
-        Vector2 chosenNextCase = possibleCases[rand];
+            Vector2 chosenNextCase = possibleCases[rand];
 
-        destination = m_map.getCenterOfCell((uint)chosenNextCase.x, (uint)chosenNextCase.y);
+            destination = m_map.getCenterOfCell((uint)chosenNextCase.x, (uint)chosenNextCase.y);
+
+        } while (destination == previousPosition);
+
+        previousPosition = transform.position;
 
         GetComponent<Soul>().moveTo(destination);
+
 
         isWandering = true;
     }
