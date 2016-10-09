@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour {
     public float lengthOfGameInMinutes;
 	public Text angelScoreText;
 	public Text demonScoreText;
-	public Image angelInventory;
+    public Text timing;
 
     private static uint scoreAngel;
     private static uint scoreDemon;
@@ -28,19 +28,24 @@ public class GameController : MonoBehaviour {
         if (timeRemaining <= 0.0f)
             GameOver();
 
-		angelScoreText.text = "" + scoreAngel;
+        timing.text = "" + (int)timeRemaining;
+        angelScoreText.text = "" + scoreAngel;
 		demonScoreText.text = "" + scoreDemon;
 
-		GameObject itemInInventory = GameObject.Find ("PlayerAngel").GetComponent<PlayerInventory> ().GetItemInInventory();
-		if (itemInInventory != null) {
-			angelInventory.sprite = itemInInventory.GetComponent<Sprite> ();
-			Color tmp = angelInventory.color;
-			tmp.a = 255f;
-			angelInventory.color = tmp;
-		}
-	}
 
-    public void gainScoreAngel(uint value)
+        /*
+		GameObject itemInInventory = GameObject.Find ("PlayerAngel").GetComponent<PlayerInventory> ().GetItemInInventory();
+
+        if (itemInInventory != null) {
+            angelInventoryItem.sprite = itemInInventory.GetComponent<SpriteRenderer>().sprite;
+			Color tmp = angelInventoryItem.color;
+			tmp.a = 255f;
+            angelInventoryItem.color = tmp;
+        }
+        */
+    }
+
+public void gainScoreAngel(uint value)
     {
         scoreAngel += value;
     }
