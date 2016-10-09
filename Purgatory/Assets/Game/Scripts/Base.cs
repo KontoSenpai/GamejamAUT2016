@@ -19,12 +19,14 @@ public class Base : MonoBehaviour {
     {
         if (coll.CompareTag("Wanderer") && coll.GetComponent<Soul>().getIsBright() && isBright)
         {
+            GetComponent<AudioSource>().Play();
             Destroy(coll.gameObject);
             Spawn.decreaseNumberOfWanderer();
             GameObject.FindObjectOfType<GameController>().gainScoreAngel(Constants.WANDERER_SCORE);
         }
         else if (coll.CompareTag("Wanderer") && coll.GetComponent<Soul>().getIsDark() && !isBright)
         {
+            GetComponent<AudioSource>().Play();
             Destroy(coll.gameObject);
             Spawn.decreaseNumberOfWanderer();
             GameObject.FindObjectOfType<GameController>().gainScoreDemon(Constants.WANDERER_SCORE);

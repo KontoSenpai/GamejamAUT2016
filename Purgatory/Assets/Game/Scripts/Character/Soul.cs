@@ -10,7 +10,6 @@ public class Soul : Character {
 
     private float timer;
     private Wander wander;
-    private bool isWandering = false;
 
     private MapGrid m_map;
 
@@ -40,9 +39,9 @@ public class Soul : Character {
 
     public void Hit(bool projectileOwner)
     {
-        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
         if ( projectileOwner && !getIsBright())
         {
+            GetComponent<AudioSource>().Play();
             setIsDark(false);
             setIsBright(true);
             wander.StopWandering();
@@ -52,6 +51,7 @@ public class Soul : Character {
         }
         else if (!projectileOwner && !getIsDark())
         {
+            GetComponent<AudioSource>().Play();
             setIsDark(true);
             setIsBright(false);
             wander.StopWandering();
