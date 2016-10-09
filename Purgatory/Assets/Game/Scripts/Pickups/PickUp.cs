@@ -32,7 +32,6 @@ public class PickUp : MonoBehaviour {
 
     public void AddInventory(GameObject player)
     {
-        print("SENT TO USER INVENTORY");
         PlayerInventory inventory = player.gameObject.GetComponent<PlayerInventory>();
         if( inventory.GetItemInInventory() == null)
         {

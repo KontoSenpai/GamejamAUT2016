@@ -42,7 +42,6 @@ public class WallBehavior : MonoBehaviour
     public void SetOwner(bool bright)
     {
         Animator animator = GetComponent<Animator>();
-        print("Placed Wall");
         if (!bright)
         {
             animator.runtimeAnimatorController = animatorSprites[0];

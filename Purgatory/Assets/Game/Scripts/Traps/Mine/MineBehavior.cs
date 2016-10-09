@@ -47,11 +47,9 @@ public class MineBehavior : MonoBehaviour {
     {
         if( other.tag == "Wanderer")
         {
-            print("In explosion radius");
             Soul soul = other.GetComponent<Soul>();
             if( isOwnerBright == true && (soul.getIsDark() || (!soul.getIsBright() && !soul.getIsDark())))
             {
-                print("BOOM");
                 wanderersInExplosionRadius = explosionRadius.GetWanderers();
                 for (int i = 0; i < wanderersInExplosionRadius.Count; i++)
                 {
@@ -63,11 +61,9 @@ public class MineBehavior : MonoBehaviour {
             }
             else if( isOwnerDark == true && ( soul.getIsBright() || ( !soul.getIsBright() && !soul.getIsDark() )))
             {
-                print("BOOM dark");
                 wanderersInExplosionRadius = explosionRadius.GetWanderers();
                 for (int i = 0; i < wanderersInExplosionRadius.Count; i++)
                 {
-                    print("Wanderer" + wanderersInExplosionRadius[i].name);
                     Soul soulScript = wanderersInExplosionRadius[i].GetComponent<Soul>();
                     soulScript.Hit(isOwnerBright);
                 }
@@ -79,6 +75,5 @@ public class MineBehavior : MonoBehaviour {
 
     void Explode()
     {
-        print("toast");
     }
 }
