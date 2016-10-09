@@ -5,8 +5,8 @@ public class GameController : MonoBehaviour {
 
     public float lengthOfGameInMinutes;
 
-    private uint scoreAngel;
-    private uint scoreDemon;
+    private static uint scoreAngel;
+    private static uint scoreDemon;
     private float timeRemaining;
 
 	// Use this for initialization

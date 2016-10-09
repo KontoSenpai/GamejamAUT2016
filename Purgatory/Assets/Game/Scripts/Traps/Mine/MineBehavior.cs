@@ -28,7 +28,6 @@ public class MineBehavior : MonoBehaviour {
     public void SetOwner(bool bright)
     {
         SpriteRenderer sprite = GetComponent<SpriteRenderer>();
-        print("Placed mine");
         if ( !bright)
         {
             sprite.sprite = mineType[0];
@@ -44,25 +43,30 @@ public class MineBehavior : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if( other.gameObject.tag == "Wanderer")
+        if( other.tag == "Wanderer")
         {
-            if( isOwnerBright == true && other.gameObject.GetComponent<Character>().getIsDark())
+            print("In explosion radius");
+            Soul soul = other.GetComponent<Soul>();
+            if( isOwnerBright == true && (soul.getIsDark() || (!soul.getIsBright() && !soul.getIsDark())))
             {
-                wanderersInExplosionRadius = explosionRadius.wanderers;
+                print("BOOM");
+                wanderersInExplosionRadius = explosionRadius.GetWanderers();
                 for (int i = 0; i < wanderersInExplosionRadius.Count; i++)
                 {
-                    //TODO convert wanderers
-                    //Destroy(wanderersInExplosionRadius[i]);
+                    Soul soulScript = wanderersInExplosionRadius[i].GetComponent<Soul>();
+                    soulScript.Hit(isOwnerBright);
                 }
                 Destroy(gameObject);
             }
-            else if( isOwnerDark == true && other.gameObject.GetComponent<Character>().getIsBright())
+            else if( isOwnerDark == true && ( soul.getIsBright() || ( !soul.getIsBright() && !soul.getIsDark() )))
             {
-                wanderersInExplosionRadius = explosionRadius.wanderers;
+                print("BOOM dark");
+                wanderersInExplosionRadius = explosionRadius.GetWanderers();
                 for (int i = 0; i < wanderersInExplosionRadius.Count; i++)
                 {
-                    //TODO convert wanderers
-                    //Destroy(wanderersInExplosionRadius[i]);
+                    print("Wanderer" + wanderersInExplosionRadius[i].name);
+                    Soul soulScript = wanderersInExplosionRadius[i].GetComponent<Soul>();
+                    soulScript.Hit(isOwnerBright);
                 }
                 Destroy(gameObject);
             }

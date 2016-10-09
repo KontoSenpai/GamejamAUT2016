@@ -77,7 +77,7 @@ public class TowerBehavior : MonoBehaviour {
         projectile.transform.parent = gameObject.transform;
         if (isOwnerBright)
             projectile.GetComponent<ProjectileBehavior>().SetOwner(true, true);
-        else
+        else if( isOwnerDark)
             projectile.GetComponent<ProjectileBehavior>().SetOwner(false, true);
 
         projectile.GetComponent<ProjectileBehavior>().SetTarget( currentTarget);
@@ -93,20 +93,14 @@ public class TowerBehavior : MonoBehaviour {
     {
         if (other.gameObject.tag == "Wanderer")
         {
-            print("Aiming a soul - Enter");
             // Currently no target, so we get a new one
             if (currentTarget == null)
             {
                 Soul soul = other.GetComponent<Soul>();
-                print("no target");
                 if (isOwnerDark)
-                {
                     DarkOwner(soul, other.gameObject);
-                }
                 else if (isOwnerBright)
-                {
                     BrightOwner(soul, other.gameObject);
-                }
             }
         }
     }
@@ -115,40 +109,36 @@ public class TowerBehavior : MonoBehaviour {
     {
         if (other.gameObject.tag == "Wanderer")
         {
-            print("Aiming a soul - Stay");
             // Currently no target, so we get a new one
             if (currentTarget == null)
             {
                 Soul soul = other.GetComponent<Soul>();
-                print("no target");
                 if (isOwnerDark)
-                {
                     DarkOwner(soul, other.gameObject);
-                }
                 else if (isOwnerBright)
-                {
                     BrightOwner(soul, other.gameObject);
-                }
             }
         }
     }
 
     private void DarkOwner(Soul soul, GameObject other)
     {
-        print("Owner is dark");
         if (soul.getIsBright())
             currentTarget = other;
         else if (!soul.getIsBright() && !soul.getIsDark())
             currentTarget = other;
+        else
+            currentTarget = null;
     }
 
     private void BrightOwner(Soul soul, GameObject other)
     {
-        print("Owner is bright");
         if (soul.getIsDark())
             currentTarget = other.gameObject;
         else if (!soul.getIsBright() && !soul.getIsDark())
             currentTarget = other.gameObject;
+        else
+            currentTarget = null;
     }
 
 }
