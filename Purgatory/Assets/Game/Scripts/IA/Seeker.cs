@@ -57,6 +57,14 @@ public class Seeker : MonoBehaviour {
             }
             else
             {
+                uint value = m_map.getCellValue(new Vector2((uint)m_best.Peek().x, (uint)m_best.Peek().y));
+                if (value / 1000 == 1)
+                    AStar(m_map.getCellCoord(transform.position), m_destination);
+                else if (value / 1000 == 2 && !GetComponent<Soul>().getIsBright())
+                    AStar(m_map.getCellCoord(transform.position), m_destination);
+                else if (value / 1000 == 3 && !GetComponent<Soul>().getIsDark())
+                    AStar(m_map.getCellCoord(transform.position), m_destination);
+
 
                 Vector2 destination = m_map.getCenterOfCell((uint)m_best.Peek().x, (uint)m_best.Peek().y);
 
@@ -76,6 +84,7 @@ public class Seeker : MonoBehaviour {
         
     public void seek(Vector2 position)
     {
+        m_destination = m_map.getCellCoord(position);
 
         isActive = true;
 
@@ -134,10 +143,10 @@ public class Seeker : MonoBehaviour {
         if (matrix[(int)currentTile.x][(int)currentTile.y] / 1000 == 1)
             return -1;
         else if (matrix[(int)currentTile.x][(int)currentTile.y] / 1000 == 2 &&
-                 GetComponent<Soul>().getIsDark())
+                 !GetComponent<Soul>().getIsBright())
             return -1;
         else if (matrix[(int)currentTile.x][(int)currentTile.y] / 1000 == 3 &&
-                 GetComponent<Soul>().getIsBright())
+                 !GetComponent<Soul>().getIsDark())
             return -1;
 
         m_pathToDestination.Push(currentTile);

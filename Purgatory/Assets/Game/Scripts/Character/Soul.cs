@@ -12,11 +12,14 @@ public class Soul : Character {
     private Wander wander;
     private bool isWandering = false;
 
+    private MapGrid m_map;
+
     new void Start()
     {
         base.Start();
         wander = GetComponent<Wander>();
         timer = Time.time;
+        m_map = GameObject.FindObjectOfType<MapGrid>();
 
         setIsBright(false);
         setIsDark(false);
@@ -46,12 +49,14 @@ public class Soul : Character {
             setIsDark(false);
             setIsBright(true);
             sprite.sprite = apparence[2];
+            GetComponent<Seeker>().seek(m_map.getAngelBaseCoord());
         }
         else
         {
             setIsDark(true);
             setIsBright(false);
             sprite.sprite = apparence[1];
+            GetComponent<Seeker>().seek(m_map.getDemonBaseCoord());
         }
     }
 
