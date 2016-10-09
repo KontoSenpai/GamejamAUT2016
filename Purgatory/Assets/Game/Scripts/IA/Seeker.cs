@@ -84,6 +84,8 @@ public class Seeker : MonoBehaviour {
         
     public void seek(Vector2 position)
     {
+        Clear();
+
         m_destination = m_map.getCellCoord(position);
 
         isActive = true;
@@ -203,6 +205,14 @@ public class Seeker : MonoBehaviour {
     int posValue(Vector2 pos, int iter, Vector2 destination)
     {
         return iter + ManhattanDistance(pos, destination);
+    }
+
+    public void Clear()
+    {
+        isActive = false;
+        m_visited.Clear();
+        m_pathToDestination.Clear();
+        m_best.Clear();
     }
 
 }
