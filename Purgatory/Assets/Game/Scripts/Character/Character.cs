@@ -22,6 +22,8 @@ public class Character : MonoBehaviour {
 
         m_animator = GetComponent<Animator>();
 
+        m_position = transform.position;
+
 	}
 	
 	// Moves Character
