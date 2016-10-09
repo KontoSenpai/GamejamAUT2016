@@ -79,6 +79,20 @@ public class MapGrid : MonoBehaviour {
                            yMax - (x * cellHeight + (float)cellHeight / 2));
     }
 
+    public void addValueToCell(Vector2 pos, uint value)
+    {
+        Vector2 cellCoord = getCellCoord(pos);
+
+        mapGrid[(uint)cellCoord.x][(uint)cellCoord.y] += value;
+    }
+
+    public void substractValueToCell(Vector2 pos, uint value)
+    {
+        Vector2 cellCoord = getCellCoord(pos);
+
+        mapGrid[(uint)cellCoord.x][(uint)cellCoord.y] -= value;
+    }
+
     public Vector2 manhattanDistance(Vector2 StartPoint, Vector2 EndPoint)
     {
 
@@ -98,6 +112,7 @@ public class MapGrid : MonoBehaviour {
 
     public void gridSetup()
     {
+
         cellWidth = (Mathf.Abs(xMin) + Mathf.Abs(xMax)) / column;
         cellHeight = (Mathf.Abs(yMin) + Mathf.Abs(yMax)) / row;
 
@@ -197,7 +212,6 @@ public class MapGrid : MonoBehaviour {
         setWandererSpawnerTile(11, 11);
         setWandererSpawnerTile(11, 15);
     }
-
     
     public void setPickUpSpawnerTile(uint row, uint column)
     {
