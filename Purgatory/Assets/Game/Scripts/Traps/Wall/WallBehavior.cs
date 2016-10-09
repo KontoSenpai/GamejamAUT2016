@@ -1,26 +1,43 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WallBehavior : MonoBehaviour {
+public class WallBehavior : MonoBehaviour
+{
 
     // 0 : Evil
     // 1 : Holy
     public RuntimeAnimatorController[] animatorSprites;
 
+    private float lifeStart;
+
     private bool isOwnerDark = false;
     private bool isOwnerBright = false;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
-	
-	}
-	
-	// Update is called once per frame
-	void Update ()
+
+        lifeStart = Time.deltaTime;
+
+    }
+
+    // Update is called once per frame
+    void Update()
     {
-	
-	}
+
+        if (Time.deltaTime - lifeStart >= Constants.TOWER_LIFETIME)
+        {
+
+            if (isOwnerDark)
+                GameObject.FindObjectOfType<MapGrid>().substractValueToCell(transform.position, Constants.OBSTACLE_DARK);
+            else
+                GameObject.FindObjectOfType<MapGrid>().substractValueToCell(transform.position, Constants.OBSTACLE_BRIGHT);
+
+            Destroy(gameObject);
+
+        }
+
+    }
 
     public void SetOwner(bool bright)
     {
@@ -30,11 +47,14 @@ public class WallBehavior : MonoBehaviour {
         {
             animator.runtimeAnimatorController = animatorSprites[0];
             isOwnerDark = true;
+            GameObject.FindObjectOfType<MapGrid>().addValueToCell(transform.position, Constants.OBSTACLE_DARK);
+
         }
         else
         {
             animator.runtimeAnimatorController = animatorSprites[1];
             isOwnerBright = true;
+            GameObject.FindObjectOfType<MapGrid>().addValueToCell(transform.position, Constants.OBSTACLE_BRIGHT);
         }
     }
 
