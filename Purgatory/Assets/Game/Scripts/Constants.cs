@@ -28,8 +28,8 @@ public static class Constants {
     public const float TOWER_LIFETIME = 20.00f;
     public const float TOWER_PROJECTILE_SPEED = 6.00f;
 
-    public const float PLAYER_RATE_OF_FIRE = 0.25f;
-    public const float PLAYER_PROJECTILE_SPEED = 6.0f;
+    public const float PLAYER_RATE_OF_FIRE = 0.75f;
+    public const float PLAYER_PROJECTILE_SPEED = 12.0f;
     public const float PLAYER_PROJECTILE_LIFESPAN = 5.0f;
 
     public const uint CRYSTAL_ANGEL = 100;

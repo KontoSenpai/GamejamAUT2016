@@ -13,14 +13,6 @@ public class PlayerInventory : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F))
-        {
-            if( itemInInventory != null)
-            {
-                print("USING ITEM");
-                UseItem();
-            }
-        }
 	}
 
     public void AddInventory(GameObject trap)
@@ -36,13 +28,16 @@ public class PlayerInventory : MonoBehaviour
 
     public void UseItem()
     {
-        GameObject objectPlaced = (GameObject)Instantiate(itemInInventory, transform.position, transform.rotation);
-        if( objectPlaced.tag == "Mine")
-            DeployMine(objectPlaced);
-        if( objectPlaced.tag == "Tower")
-            DeployTower(objectPlaced);
-        if (objectPlaced.tag == "Wall")
-            DeployWall(objectPlaced);
+        if( itemInInventory != null)
+        {
+            GameObject objectPlaced = (GameObject)Instantiate(itemInInventory, transform.position, transform.rotation);
+            if (objectPlaced.tag == "Mine")
+                DeployMine(objectPlaced);
+            if (objectPlaced.tag == "Tower")
+                DeployTower(objectPlaced);
+            if (objectPlaced.tag == "Wall")
+                DeployWall(objectPlaced);
+        }
     }
 
     void DeployMine( GameObject mine)

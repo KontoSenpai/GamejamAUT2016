@@ -21,6 +21,7 @@ public class Spawn : MonoBehaviour {
 
         timerWanderer = Time.time;
         timerPickUp = Time.time;
+        SpawnPickUp();
 	}
 	
 	// Update is called once per frame
@@ -35,7 +36,7 @@ public class Spawn : MonoBehaviour {
         if (CompareTag("PickUpSpawner") && Time.time - timerPickUp >= pickUpSpawnDelay)
         {
             timerPickUp = Time.time;
-            SpawnWanderer();
+            SpawnPickUp();
         }
 
     }
