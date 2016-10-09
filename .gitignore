@@ -29,3 +29,5 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Purgatory/Assets/InControl/Plugins/x86/XInputInterface32.dll.meta
+Purgatory/Assets/InControl/Plugins/x86_64/XInputInterface64.dll.meta
