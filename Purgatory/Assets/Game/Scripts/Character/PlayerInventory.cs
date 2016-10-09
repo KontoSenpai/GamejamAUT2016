@@ -8,7 +8,7 @@ public class PlayerInventory : MonoBehaviour
 
     void Start()
     {
-        isBright = GetComponent<Player>().getIsBright();
+        
     }
 	// Update is called once per frame
 	void Update()
@@ -29,7 +29,11 @@ public class PlayerInventory : MonoBehaviour
     {
         if( itemInInventory != null)
         {
-            GameObject objectPlaced = (GameObject)Instantiate(itemInInventory, transform.position, transform.rotation);
+            isBright = GetComponent<Player>().getIsBright();
+
+            GameObject objectPlaced = (GameObject)Instantiate(itemInInventory,
+                GameObject.FindObjectOfType<MapGrid>().getCenterOfCell(transform.position),
+                Quaternion.identity);
             if (objectPlaced.tag == "Mine")
                 DeployMine(objectPlaced);
             if (objectPlaced.tag == "Tower")
