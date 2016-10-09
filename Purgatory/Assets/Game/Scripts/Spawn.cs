@@ -35,7 +35,7 @@ public class Spawn : MonoBehaviour {
         if (CompareTag("PickUpSpawner") && Time.time - timerPickUp >= pickUpSpawnDelay)
         {
             timerPickUp = Time.time;
-            SpawnWanderer();
+            SpawnPickUp();
         }
 
     }
