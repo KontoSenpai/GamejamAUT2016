@@ -27,7 +27,8 @@ public class PlayerInventory : MonoBehaviour
 
     public void UseItem()
     {
-        if( itemInInventory != null)
+        isBright = GetComponent<Player>().getIsBright();
+        if ( itemInInventory != null)
         {
             isBright = GetComponent<Player>().getIsBright();
 
