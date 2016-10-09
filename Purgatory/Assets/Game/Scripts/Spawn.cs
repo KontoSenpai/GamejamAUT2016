@@ -72,5 +72,10 @@ public class Spawn : MonoBehaviour {
         Instantiate(wanderer, transform.position, Quaternion.identity);
         numberOfWanderers++;
     }
+
+    public static void decreaseNumberOfWanderer()
+    {
+        numberOfWanderers--;
+    }
         
 }
