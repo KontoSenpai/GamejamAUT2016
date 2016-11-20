@@ -36,4 +36,6 @@ public static class Constants {
 
     public const uint CRYSTAL_ANGEL = 100;
     public const uint CRYSTAL_DEMON = 200;
+
+    public static bool paused = false;
 }

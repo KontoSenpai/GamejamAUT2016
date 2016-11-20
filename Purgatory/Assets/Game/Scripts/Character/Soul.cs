@@ -72,6 +72,7 @@ public class Soul : Character {
             cool.a = 0.7f;
             GetComponent<SpriteRenderer>().material.color = cool;
         }
+        m_speed += 0.5f;
     }
 
 }

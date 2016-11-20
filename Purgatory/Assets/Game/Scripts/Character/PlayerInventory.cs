@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerInventory : MonoBehaviour
 {
+    public GameObject inventorySlot;
+
     GameObject itemInInventory;
     private bool isBright;
 
@@ -18,6 +21,8 @@ public class PlayerInventory : MonoBehaviour
     public void AddInventory(GameObject trap)
     {
         itemInInventory = trap;
+        inventorySlot.GetComponent<Image>().sprite = itemInInventory.GetComponentInChildren<SpriteRenderer>().sprite;
+        inventorySlot.SetActive(true);
     }
 
     public GameObject GetItemInInventory()
@@ -41,6 +46,9 @@ public class PlayerInventory : MonoBehaviour
                 DeployTower(objectPlaced);
             if (objectPlaced.tag == "Wall")
                 DeployWall(objectPlaced);
+
+            inventorySlot.GetComponent<Image>().sprite = null;
+            inventorySlot.SetActive(false);
         }
     }
 

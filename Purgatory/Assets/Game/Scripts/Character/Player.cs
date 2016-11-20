@@ -198,19 +198,21 @@ public class Player : Character {
     public void aimNShoot(Vector3 shootingDir)
     {
 
-        Vector3 projectileInitialPosition = new Vector3();
-        projectileInitialPosition = transform.position;
-        projectileInitialPosition.y += 1.5f;
-        GameObject instantiatedProjectile = (GameObject)Instantiate (projectile, projectileInitialPosition, transform.rotation);
+        if(!Constants.paused){
+            Vector3 projectileInitialPosition = new Vector3();
+            projectileInitialPosition = transform.position;
+            projectileInitialPosition.y += 1.5f;
+            GameObject instantiatedProjectile = (GameObject)Instantiate(projectile, projectileInitialPosition, transform.rotation);
 
-        if(getIsBright())
-            instantiatedProjectile.GetComponent<ProjectileBehavior>().SetOwner( true, false);
-        else if(getIsDark())
-            instantiatedProjectile.GetComponent<ProjectileBehavior>().SetOwner(false, false);
+            if (getIsBright())
+                instantiatedProjectile.GetComponent<ProjectileBehavior>().SetOwner(true, false);
+            else if (getIsDark())
+                instantiatedProjectile.GetComponent<ProjectileBehavior>().SetOwner(false, false);
 
-        GetComponent<AudioSource>().Play();
-        instantiatedProjectile.GetComponent<ProjectileBehavior> ().SetTargetPosition(shootingDir);
+            GetComponent<AudioSource>().Play();
+            instantiatedProjectile.GetComponent<ProjectileBehavior>().SetTargetPosition(shootingDir);
+        }
 
-	}
+    }
 
 }

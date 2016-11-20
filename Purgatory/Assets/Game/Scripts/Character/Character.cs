@@ -30,25 +30,27 @@ public class Character : MonoBehaviour {
 	protected void Update ()
     {
 
-        if (m_velocity.magnitude != 1.0f)
-            m_velocity.Normalize();
+        if(!Constants.paused){
+            if (m_velocity.magnitude != 1.0f)
+                m_velocity.Normalize();
 
-        if (m_speed != 0.0f)
-            m_position += m_velocity * m_speed * Time.deltaTime;
+            if (m_speed != 0.0f)
+                m_position += m_velocity * m_speed * Time.deltaTime;
 
-        if (m_animator)
-        {
+            if (m_animator)
+            {
 
-            m_animator.SetFloat("hSpeed", m_velocity.x);
-            m_animator.SetFloat("vSpeed", m_velocity.y);
+                m_animator.SetFloat("hSpeed", m_velocity.x);
+                m_animator.SetFloat("vSpeed", m_velocity.y);
 
-            m_animator.SetBool("isMoving", m_velocity.x > 0.1 || m_velocity.x < -0.1 ||
-                                           m_velocity.y > 0.1 || m_velocity.y < -0.1);
+                m_animator.SetBool("isMoving", m_velocity.x > 0.1 || m_velocity.x < -0.1 ||
+                                               m_velocity.y > 0.1 || m_velocity.y < -0.1);
 
-            m_animator.SetInteger("spriteDirection", (int)m_spriteDirection);
+                m_animator.SetInteger("spriteDirection", (int)m_spriteDirection);
 
+            }
+            AllowMovement();
         }
-        AllowMovement();
     }
 
     // --- ACCESSORS ---

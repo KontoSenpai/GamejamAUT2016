@@ -9,6 +9,14 @@ public class GameController : MonoBehaviour {
 	public Text demonScoreText;
     public Text timing;
 
+    public AudioSource backgroundMusic;
+    public AudioSource demonWinSound;
+    public AudioSource angelWinSound;
+
+    public GameObject endPanel;
+    public Sprite demonWinSprite;
+    public Sprite angelWinSprite;
+
     private static uint scoreAngel;
     private static uint scoreDemon;
     private float timeRemaining;
@@ -17,15 +25,22 @@ public class GameController : MonoBehaviour {
 	void Start () {
 
         timeRemaining = 60.0f * lengthOfGameInMinutes;
-	//	scoreAngel = 0;
-	//	scoreDemon = 0;
-	}
+        backgroundMusic.Play();
+        angelWinSound.Play();
+        angelWinSound.Pause();
+        demonWinSound.Play();
+        demonWinSound.Pause();
+
+        //	scoreAngel = 0;
+        //	scoreDemon = 0;
+    }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        timeRemaining -= Time.deltaTime;
-        if (timeRemaining <= 0.0f)
+        if(timeRemaining > 0.0f)
+            timeRemaining -= Time.deltaTime;
+        else
             GameOver();
 
         timing.text = "" + (int)timeRemaining;
@@ -57,13 +72,22 @@ public void gainScoreAngel(uint value)
 
     public void GameOver()
     {
+        Constants.paused = true;
+
+        //Time.timeScale = 0;
         if (scoreAngel > scoreDemon)
         {
-            print("L'ange remporte la partie !");
+            endPanel.GetComponent<Image>().sprite = angelWinSprite;
+            endPanel.SetActive(true);
+            backgroundMusic.Stop();
+            angelWinSound.UnPause();
         }
         else if (scoreDemon > scoreAngel)
         {
-            print("Le démon remporte la partie !");
+            endPanel.GetComponent<Image>().sprite = demonWinSprite;
+            endPanel.SetActive(true);
+            backgroundMusic.Stop();
+            demonWinSound.UnPause();
         }
         else
         {
